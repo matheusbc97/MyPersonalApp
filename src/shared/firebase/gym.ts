@@ -1,13 +1,13 @@
 import {GymExercise} from './../types/GymExercise';
 import firestore from '@react-native-firebase/firestore';
 
-import {
-  CreateGymExercisesParams,
-  CreateGymTrainingParams,
-  UpdateGymExercisesParams,
-  UpdateGymTrainingParams,
-} from '@/services/api/GymService/types';
 import {Bank} from '../types';
+import {
+  CreateGymTrainingParams,
+  UpdateGymTrainingParams,
+  CreateGymExercisesParams,
+  UpdateGymExercisesParams,
+} from '@/services/api/gym/types';
 
 const userId = 'U98XZMw9DLQq8oyQXBtf';
 

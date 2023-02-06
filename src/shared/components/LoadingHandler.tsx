@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   Text,
   View,
@@ -21,6 +21,7 @@ export const loaderHandler = {
 
 const LoadingHandler = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const timeoutRef = useRef<any>(null);
 
   useBackHandler(() => isVisible);
 
@@ -28,7 +29,14 @@ const LoadingHandler = () => {
     const emitter = DeviceEventEmitter.addListener(
       'changeLoadingEffect',
       data => {
-        setIsVisible(data.isVisible);
+        if (data.isVisible) {
+          timeoutRef.current = setTimeout(() => {
+            setIsVisible(data.isVisible);
+          }, 150);
+        } else {
+          clearTimeout(timeoutRef.current);
+          setIsVisible(data.isVisible);
+        }
       },
     );
 

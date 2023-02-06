@@ -1,4 +1,4 @@
-import {CreateGymTrainingParams} from '@/services/api/GymService/types';
+import {CreateGymTrainingParams} from '@/services/api/gym/types';
 import createFakeId from '@/shared/utils/createFakeId';
 import mockRequest from '@/shared/utils/mockRequest';
 import {gymTrainingsMock} from '../gymTrainings';

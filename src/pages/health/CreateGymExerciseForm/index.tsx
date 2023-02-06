@@ -8,13 +8,14 @@ import {
   GymExercisesFormList,
 } from '@/shared/components';
 import {GymExercisesFormListHandles} from '@/shared/components/forms/GymExercisesFormList';
-import {createGymExercisesService} from '@/services/api/GymService';
+
 import {loaderHandler} from '@/shared/components/LoadingHandler';
 import {ScreenProps} from '@/shared/types';
+import {createGymExercisesService} from '@/services';
 
 const CreateGymExerciseForm = ({
   route,
-  navigation
+  navigation,
 }: ScreenProps<'CreateGymExerciseForm'>) => {
   const formRef = useRef<GymExercisesFormListHandles>(null);
 
@@ -29,7 +30,7 @@ const CreateGymExerciseForm = ({
             exercisesItems: form,
             trainingId: route.params.gymTrainingId,
           });
-          navigation.pop()
+          navigation.pop();
         } catch (error) {
           console.log('error', error);
         }

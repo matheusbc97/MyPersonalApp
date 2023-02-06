@@ -8,9 +8,10 @@ import {
   ScreenWrapper,
   SubHeader,
 } from '@/shared/components';
-import {updateGymTrainingService} from '@/services/api/GymService';
+
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
 import {ScreenProps} from '@/shared/types';
+import {updateGymTrainingService} from '@/services';
 
 function UpdateGymTraining({
   navigation,

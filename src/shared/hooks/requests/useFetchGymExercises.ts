@@ -1,5 +1,4 @@
-import {fetchGymExercisesService} from '@/services/api/GymService';
-
+import {fetchGymExercisesService} from '@/services';
 import useRequest from './useRequest';
 
 const useFetchGymExercises = () => {

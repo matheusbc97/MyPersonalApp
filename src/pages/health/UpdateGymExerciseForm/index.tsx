@@ -8,9 +8,10 @@ import {
   GymExercisesFormList,
 } from '@/shared/components';
 import {GymExercisesFormListHandles} from '@/shared/components/forms/GymExercisesFormList';
-import {updateGymExercisesService} from '@/services/api/GymService';
+
 import {loaderHandler} from '@/shared/components/LoadingHandler';
 import {ScreenProps} from '@/shared/types';
+import {updateGymExercisesService} from '@/services';
 
 const UpdateGymExerciseForm = ({
   route,

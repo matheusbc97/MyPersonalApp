@@ -8,6 +8,7 @@ import useFetchCreditCardsOfBank from './requests/useFetchCreditCardsOfBank';
 import useFetchGymTrainings from './requests/useFetchGymTrainings';
 import useFetchGymExercises from './requests/useFetchGymExercises';
 import useCreateFinanceNote from './requests/create/useCreateFinanceNote';
+import useSendRequest from './requests/useSendRequest';
 
 export {
   useFetchFinances,
@@ -20,4 +21,5 @@ export {
   useFetchGymTrainings,
   useFetchGymExercises,
   useCreateFinanceNote,
+  useSendRequest,
 };
