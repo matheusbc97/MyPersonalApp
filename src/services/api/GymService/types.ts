@@ -13,8 +13,8 @@ export interface UpdateGymTrainingParams {
 }
 
 export interface CreateGymExercisesParams {
-  gymTrainingId: string;
-  gymExercises: {
+  trainingId: string;
+  exercisesItems: {
     name: string;
     weight: string;
     series: number;

@@ -12,12 +12,8 @@ import {useFetchGymTrainings} from '@/shared/hooks';
 import {ScreenProps} from '@/shared/types';
 
 const GymDetails = ({navigation}: ScreenProps<'GymDetails'>) => {
-  const {fetchGymTrainings, gymTrainings, hasError, isLoading} =
+  const {gymTrainings, hasError, isLoading} =
     useFetchGymTrainings();
-
-  useEffect(() => {
-    fetchGymTrainings();
-  }, [fetchGymTrainings]);
 
   return (
     <ScreenWrapper>
@@ -34,7 +30,6 @@ const GymDetails = ({navigation}: ScreenProps<'GymDetails'>) => {
             onPress={() =>
               navigation.navigate('GymTrainingDetails', {
                 gymTraining,
-                onGymTrainingUpdated: fetchGymTrainings,
               })
             }
             key={gymTraining.id}
@@ -44,9 +39,7 @@ const GymDetails = ({navigation}: ScreenProps<'GymDetails'>) => {
       />
       <CreateFab
         onPress={() =>
-          navigation.navigate('CreateGymTraining', {
-            onGymTrainingCreated: fetchGymTrainings,
-          })
+          navigation.navigate('CreateGymTraining')
         }
         style={{alignSelf: 'flex-end'}}
       />

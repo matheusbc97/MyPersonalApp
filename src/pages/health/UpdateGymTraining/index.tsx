@@ -31,7 +31,6 @@ function UpdateGymTraining({
         updateGymTrainingService(newGymTraining),
       );
 
-      route.params.onGymTrainingUpdated(newGymTraining);
       navigation.pop();
     } catch (error) {}
   };

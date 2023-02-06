@@ -11,25 +11,16 @@ import {
 import {createGymTrainingService} from '@/services/api/GymService';
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
 import {ScreenProps} from '@/shared/types';
+import useCreateGym from './useCreateGym';
 
 function CreateGymTraining({
   navigation,
-  route,
 }: ScreenProps<'CreateGymTraining'>) {
   const formRef = useRef<GymTrainingFormHandles>(null);
 
-  const handleGymTrainingSubmitSuccess = async (form: IGymTrainingForm) => {
-    try {
-      await requestWithScreenLoading(() =>
-        createGymTrainingService({
-          name: form.name,
-        }),
-      );
-
-      route.params.onGymTrainingCreated();
-      navigation.pop();
-    } catch (error) {}
-  };
+  const handleGymTrainingSubmitSuccess = useCreateGym({onSuccess: () => {
+    navigation.pop();
+  }});
 
   return (
     <ScreenWrapper>

@@ -1,16 +1,17 @@
 import {fetchGymTrainingsService} from '@/services/api/GymService';
+import { QUERY_KEYS } from '@/shared/constants/queryKeys';
+import { useQuery } from 'react-query';
 import useRequest from './useRequest';
 
 const useFetchGymTrainings = () => {
-  const {data, getData, hasError, isLoading} = useRequest(
-    fetchGymTrainingsService,
-  );
+  const {data, isLoading, isError} = useQuery(QUERY_KEYS.GYM_TRAININGS, fetchGymTrainingsService
+);
+
 
   return {
     gymTrainings: data ?? [],
-    fetchGymTrainings: getData,
     isLoading,
-    hasError,
+    hasError: isError,
   };
 };
 

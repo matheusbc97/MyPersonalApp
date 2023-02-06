@@ -79,7 +79,6 @@ export type StackParams = {
   GymDetails: undefined;
   GymTrainingDetails: {
     gymTraining: GymTraining;
-    onGymTrainingUpdated: () => void;
   };
   CreateGymExerciseForm: {
     gymTrainingId: string;
@@ -91,11 +90,8 @@ export type StackParams = {
     onFinanceUpdated: () => void;
     finance: MonthlyFinance;
   };
-  CreateGymTraining: {
-    onGymTrainingCreated: () => void;
-  };
+  CreateGymTraining: undefined;
   UpdateGymTraining: {
-    onGymTrainingUpdated: (gymTraining: GymTraining) => void;
     gymTraining: GymTraining;
   };
   UpdateGymExerciseForm: {

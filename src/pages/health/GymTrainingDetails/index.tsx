@@ -32,12 +32,6 @@ const GymTrainingDetails = ({
   const handleEditGymTraining = () => {
     navigation.navigate('UpdateGymTraining', {
       gymTraining: gymTraining,
-      onGymTrainingUpdated: (gymTrainingUpdated: GymTraining) => {
-        navigation.setParams({
-          gymTraining: gymTrainingUpdated,
-        });
-        route.params.onGymTrainingUpdated();
-      },
     });
   };
 

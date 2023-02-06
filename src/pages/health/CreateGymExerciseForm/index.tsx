@@ -14,6 +14,7 @@ import {ScreenProps} from '@/shared/types';
 
 const CreateGymExerciseForm = ({
   route,
+  navigation
 }: ScreenProps<'CreateGymExerciseForm'>) => {
   const formRef = useRef<GymExercisesFormListHandles>(null);
 
@@ -25,9 +26,10 @@ const CreateGymExerciseForm = ({
         loaderHandler.showLoader();
         try {
           await createGymExercisesService({
-            gymExercises: form,
-            gymTrainingId: route.params.gymTrainingId,
+            exercisesItems: form,
+            trainingId: route.params.gymTrainingId,
           });
+          navigation.pop()
         } catch (error) {
           console.log('error', error);
         }
