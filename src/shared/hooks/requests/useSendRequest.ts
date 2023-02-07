@@ -14,7 +14,7 @@ export interface SendRequestOptions {
 
 interface UseSendRequestProps extends SendRequestOptions {
   promise: ActionThunk;
-  keyToInvalidate: string | string[] | string[][];
+  keyToInvalidate: string | (string | number)[] | (string | number)[][];
 }
 
 function useSendRequest<T extends ActionThunk>({
@@ -29,13 +29,13 @@ function useSendRequest<T extends ActionThunk>({
   const mutation = useMutation(promise, {
     onSuccess: () => {
       if (Array.isArray(keyToInvalidate) && Array.isArray(keyToInvalidate[0])) {
-        keyToInvalidate.forEach(key => {
+        keyToInvalidate.forEach((key: any) => {
           queryClient.invalidateQueries(key);
         });
       } else {
+        console.log('keyToInvalidate', keyToInvalidate);
         queryClient.invalidateQueries(keyToInvalidate);
       }
-
       onSuccess?.();
     },
     onError: error => {

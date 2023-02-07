@@ -8,12 +8,12 @@ import {
   SubHeader,
 } from '@/shared/components';
 import {ScreenProps} from '@/shared/types';
-import useCreateGym from './useCreateGym';
+import useCreateGymTraining from '../../../shared/hooks/requests/gym/trainings/useCreateGymTraining';
 
 function CreateGymTraining({navigation}: ScreenProps<'CreateGymTraining'>) {
   const formRef = useRef<GymTrainingFormHandles>(null);
 
-  const handleGymTrainingSubmitSuccess = useCreateGym({
+  const handleGymTrainingSubmitSuccess = useCreateGymTraining({
     onSuccess: () => {
       navigation.pop();
     },

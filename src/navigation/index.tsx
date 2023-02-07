@@ -97,7 +97,6 @@ export type StackParams = {
   UpdateGymExerciseForm: {
     gymTrainingId: string;
     gymExercise: GymExercise;
-    onGymExerciseUpdated: () => void;
   };
   CityDetails: undefined;
   Cities: undefined;

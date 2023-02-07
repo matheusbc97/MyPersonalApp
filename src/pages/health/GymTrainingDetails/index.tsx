@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {ScrollView, View} from 'react-native';
 
 import {
@@ -8,26 +8,30 @@ import {
   GymExerciseListItem,
   MapList,
   Row,
-  IconButton,
   DeleteIconButton,
   EditIconButton,
 } from '@/shared/components';
 import TitleWithSeparator from '@/shared/components/section-headers/TitleWithSeparatorSectionHeader';
 import {useFetchGymExercises} from '@/shared/hooks';
-import {GymExercise, GymTraining, ScreenProps} from '@/shared/types';
+import {GymExercise, ScreenProps} from '@/shared/types';
+import useDeleteGymTraining from '@/shared/hooks/requests/gym/trainings/useDeleteGymTraining';
 
 const GymTrainingDetails = ({
   navigation,
   route,
 }: ScreenProps<'GymTrainingDetails'>) => {
-  const {getGymExercises, gymExercises, hasError, isLoading} =
-    useFetchGymExercises();
-
   const gymTraining = route.params.gymTraining;
 
-  useEffect(() => {
-    getGymExercises(gymTraining.id);
-  }, [getGymExercises, gymTraining.id]);
+  const {gymExercises, hasError, isLoading} = useFetchGymExercises(
+    gymTraining.id,
+  );
+
+  const deleteGym = useDeleteGymTraining({
+    trainingId: gymTraining.id,
+    onSuccess: () => {
+      navigation.pop();
+    },
+  });
 
   const handleEditGymTraining = () => {
     navigation.navigate('UpdateGymTraining', {
@@ -38,9 +42,6 @@ const GymTrainingDetails = ({
   const handleCreateGymExercise = () => {
     navigation.navigate('CreateGymExerciseForm', {
       gymTrainingId: gymTraining.id,
-      onGymExerciseCreated: () => {
-        getGymExercises(gymTraining.id);
-      },
     });
   };
 
@@ -48,10 +49,11 @@ const GymTrainingDetails = ({
     navigation.navigate('UpdateGymExerciseForm', {
       gymExercise: gymExercise,
       gymTrainingId: gymTraining.id,
-      onGymExerciseUpdated: () => {
-        getGymExercises(gymTraining.id);
-      },
     });
+  };
+
+  const handleDeleteGymTraining = () => {
+    deleteGym(gymTraining.id);
   };
 
   return (
@@ -77,7 +79,7 @@ const GymTrainingDetails = ({
       <Row style={{marginHorizontal: 5}}>
         <DeleteIconButton
           style={{marginHorizontal: 5}}
-          onPress={handleEditGymTraining}
+          onPress={handleDeleteGymTraining}
         />
 
         <EditIconButton onPress={handleEditGymTraining} />

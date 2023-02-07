@@ -10,7 +10,7 @@ import apiService from '../apiService';
 import {CreateGymExercisesParams, UpdateGymExercisesParams} from './types';
 
 export function fetchGymExercisesService(
-  gymTrainingId: string,
+  gymTrainingId: number,
 ): Promise<GymExercise[]> {
   return apiService({
     api: getGymExercisesRequest(gymTrainingId),

@@ -9,9 +9,8 @@ import {
 } from '@/shared/components';
 import {GymExercisesFormListHandles} from '@/shared/components/forms/GymExercisesFormList';
 
-import {loaderHandler} from '@/shared/components/LoadingHandler';
 import {ScreenProps} from '@/shared/types';
-import {createGymExercisesService} from '@/services';
+import useCreateGymExercise from '@/shared/hooks/requests/gym/exercises/useCreateGymExercise';
 
 const CreateGymExerciseForm = ({
   route,
@@ -19,23 +18,21 @@ const CreateGymExerciseForm = ({
 }: ScreenProps<'CreateGymExerciseForm'>) => {
   const formRef = useRef<GymExercisesFormListHandles>(null);
 
+  const createGymExercise = useCreateGymExercise({
+    onSuccess: () => {
+      navigation.pop();
+    },
+  });
+
   const submitForm = async () => {
     if (formRef.current) {
       const {form, isValid} = formRef.current.submitExercisesFormList();
 
       if (isValid) {
-        loaderHandler.showLoader();
-        try {
-          await createGymExercisesService({
-            exercisesItems: form,
-            trainingId: route.params.gymTrainingId,
-          });
-          navigation.pop();
-        } catch (error) {
-          console.log('error', error);
-        }
-
-        loaderHandler.hideLoader();
+        createGymExercise({
+          exercisesItems: form,
+          trainingId: route.params.gymTrainingId,
+        });
       }
     }
   };

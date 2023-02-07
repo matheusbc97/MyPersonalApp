@@ -6,7 +6,7 @@ import {GymExercise} from '@/shared/types';
 import api from '../api';
 
 export async function getGymExercisesRequest(
-  trainingId: string,
+  trainingId: number,
 ): Promise<GymExercise[]> {
   const response = await api.get('/gym/exercises', {params: {trainingId}});
 

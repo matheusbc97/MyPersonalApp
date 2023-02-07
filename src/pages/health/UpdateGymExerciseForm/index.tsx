@@ -30,7 +30,6 @@ const UpdateGymExerciseForm = ({
             exercisesItems: form,
             id: route.params.gymExercise.id,
           });
-          route.params.onGymExerciseUpdated();
           navigation.pop();
         } catch (error) {
           console.log('error', error);

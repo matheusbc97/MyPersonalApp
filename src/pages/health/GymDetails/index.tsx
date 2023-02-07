@@ -12,8 +12,7 @@ import {useFetchGymTrainings} from '@/shared/hooks';
 import {ScreenProps} from '@/shared/types';
 
 const GymDetails = ({navigation}: ScreenProps<'GymDetails'>) => {
-  const {gymTrainings, hasError, isLoading} =
-    useFetchGymTrainings();
+  const {gymTrainings, hasError, isLoading} = useFetchGymTrainings();
 
   return (
     <ScreenWrapper>
@@ -38,9 +37,7 @@ const GymDetails = ({navigation}: ScreenProps<'GymDetails'>) => {
         )}
       />
       <CreateFab
-        onPress={() =>
-          navigation.navigate('CreateGymTraining')
-        }
+        onPress={() => navigation.navigate('CreateGymTraining')}
         style={{alignSelf: 'flex-end'}}
       />
     </ScreenWrapper>

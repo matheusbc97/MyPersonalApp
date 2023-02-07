@@ -28,6 +28,6 @@ export async function updateGymTrainingRequest({
   return response.data;
 }
 
-export async function deleteGymTrainingRequest(id: string): Promise<void> {
+export async function deleteGymTrainingRequest(id: number): Promise<void> {
   await api.delete(`/gym/trainings/${id}`);
 }
