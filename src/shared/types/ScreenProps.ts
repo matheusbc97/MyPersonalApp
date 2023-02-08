@@ -1,8 +1,8 @@
 import {StackParams} from '@/navigation';
 import {RouteProp} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export interface ScreenProps<T extends keyof StackParams> {
-  navigation: StackNavigationProp<StackParams, T>;
+  navigation: NativeStackNavigationProp<StackParams, T>;
   route: RouteProp<StackParams, T>;
 }

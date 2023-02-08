@@ -73,6 +73,7 @@ import DeleteIconButton from './buttons/filled/icon-buttons/DeleteIconButton';
 import EditFab from './buttons/filled/fabs/EditFab';
 import CountryInput from './inputs/CountryInput';
 import CityListItem from './lists-items/CityListItem';
+import InfoWithLabel from './InfoWithLabel';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -146,6 +147,7 @@ export {
   EditFab,
   CountryInput,
   CityListItem,
+  InfoWithLabel,
 };
 
 export type {

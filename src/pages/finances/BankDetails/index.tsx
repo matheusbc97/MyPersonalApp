@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import {View, ScrollView} from 'react-native';
-import {RouteProp} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
 
 import {
   ScreenWrapper,
@@ -12,8 +10,7 @@ import {
   CreateCreditCardGridItem,
   CreateAccountGridItem,
 } from '@/shared/components';
-import {Bank} from '@/shared/types';
-import {StackParams} from '@/navigation';
+import {Bank, ScreenProps} from '@/shared/types';
 import TitleWithSeparator from '@/shared/components/section-headers/TitleWithSeparatorSectionHeader';
 import {useFetchBankAccounts, useFetchCreditCardsOfBank} from '@/shared/hooks';
 
@@ -21,12 +18,7 @@ export interface BankDetailsPageParams {
   bank: Bank;
 }
 
-interface Props {
-  navigation: StackNavigationProp<StackParams, 'BankDetails'>;
-  route: RouteProp<StackParams, 'BankDetails'>;
-}
-
-function BankDetailsPage({route, navigation}: Props) {
+function BankDetailsPage({route, navigation}: ScreenProps<'BankDetails'>) {
   const bank = route.params.bank;
 
   const {

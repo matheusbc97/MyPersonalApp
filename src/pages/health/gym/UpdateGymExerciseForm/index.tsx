@@ -19,6 +19,8 @@ const UpdateGymExerciseForm = ({
 }: ScreenProps<'UpdateGymExerciseForm'>) => {
   const formRef = useRef<GymExercisesFormListHandles>(null);
 
+  const gymExercise = route.params.gymExercise;
+
   const submitForm = async () => {
     if (formRef.current) {
       const {form, isValid} = formRef.current.submitExercisesFormList();
@@ -28,7 +30,7 @@ const UpdateGymExerciseForm = ({
         try {
           await updateGymExercisesService({
             exercisesItems: form,
-            id: route.params.gymExercise.id,
+            id: gymExercise.id,
           });
           navigation.pop();
         } catch (error) {
@@ -45,14 +47,12 @@ const UpdateGymExerciseForm = ({
       <GymExercisesFormList
         ref={formRef}
         style={{flex: 1}}
-        initialState={route.params.gymExercise.exercisesItems.map(
-          gymExerciseData => ({
-            name: gymExerciseData.name,
-            repetitions: gymExerciseData.repetitions,
-            series: gymExerciseData.series,
-            weight: gymExerciseData.weight,
-          }),
-        )}
+        initialState={gymExercise.exercisesItems.map(gymExerciseData => ({
+          name: gymExerciseData.name,
+          repetitions: gymExerciseData.repetitions,
+          series: gymExerciseData.series,
+          weight: gymExerciseData.weight,
+        }))}
       />
 
       <Row flexEnd style={{marginTop: 20}}>

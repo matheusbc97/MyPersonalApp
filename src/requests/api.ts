@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {Platform} from 'react-native';
-import { devPort, prodUrl } from './api-urls';
+import {devPort, prodUrl} from './api-urls';
 
 const localUrl =
   Platform.OS === 'android'

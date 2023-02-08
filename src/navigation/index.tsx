@@ -25,11 +25,11 @@ import CreateBankForm from '@/pages/finances/CreateBankForm';
 import CreateBankAccountForm from '@/pages/finances/CreateBankAccountForm';
 import CreateCreditCardForm from '@/pages/finances/CreateCreditCardForm';
 import HealthHome from '@/pages/health/HealthHome';
-import GymDetails from '@/pages/health/GymDetails';
-import GymTrainingDetails from '@/pages/health/GymTrainingDetails';
-import CreateGymExerciseForm from '@/pages/health/CreateGymExerciseForm';
+import GymDetails from '@/pages/health/gym/GymDetails';
+import GymTrainingDetails from '@/pages/health/gym/GymTrainingDetails';
+import CreateGymExerciseForm from '@/pages/health/gym/CreateGymExerciseForm';
 import UpdateFinanceNoteForm from '@/pages/finances/UpdateFinanceNoteForm';
-import CreateGymTraining from '@/pages/health/CreateGymTraining';
+import CreateGymTraining from '@/pages/health/gym/CreateGymTraining';
 import SelectCountry from '@/pages/travels/SelectCountry';
 
 import {
@@ -39,13 +39,14 @@ import {
   GymExercise,
   GymTraining,
 } from '@/shared/types';
-import UpdateGymTraining from '@/pages/health/UpdateGymTraining';
-import UpdateGymExerciseForm from '@/pages/health/UpdateGymExerciseForm';
+import UpdateGymTraining from '@/pages/health/gym/UpdateGymTraining';
+import UpdateGymExerciseForm from '@/pages/health/gym/UpdateGymExerciseForm';
 import {MonthlyFinance} from '@/shared/types/Finance';
 import TravelsHome from '@/pages/travels/TravelsHome';
 import CityDetails from '@/pages/travels/CityDetails';
 import CreateNewCityLink from '@/pages/travels/CreateNewCityLink';
 import Cities from '@/pages/travels/Cities';
+import GymExerciseDetails from '@/pages/health/gym/GymExerciseDetails';
 
 export type StackParams = {
   Home: undefined;
@@ -81,7 +82,7 @@ export type StackParams = {
     gymTraining: GymTraining;
   };
   CreateGymExerciseForm: {
-    gymTrainingId: string;
+    gymTrainingId: number;
   };
   FinancesGroups: {
     onSelectGroup: (group: Group) => void;
@@ -95,7 +96,6 @@ export type StackParams = {
     gymTraining: GymTraining;
   };
   UpdateGymExerciseForm: {
-    gymTrainingId: string;
     gymExercise: GymExercise;
   };
   CityDetails: undefined;
@@ -103,6 +103,9 @@ export type StackParams = {
   CreateNewCityLink: undefined;
   SelectCountry: {
     onSelectCountry: (country: Country) => void;
+  };
+  GymExerciseDetails: {
+    gymExercise: GymExercise;
   };
 };
 
@@ -328,6 +331,13 @@ function MyStack() {
             headerTitle: 'Cidades',
           }}
           component={Cities}
+        />
+        <Stack.Screen
+          name="GymExerciseDetails"
+          options={{
+            headerTitle: 'Exercício',
+          }}
+          component={GymExerciseDetails}
         />
       </Stack.Navigator>
     </NavigationContainer>

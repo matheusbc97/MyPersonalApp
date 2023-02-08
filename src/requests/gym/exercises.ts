@@ -29,3 +29,11 @@ export async function updateGymExerciseRequest({
 
   return response.data;
 }
+
+export async function deleteGymExerciseRequest(
+  id: number,
+): Promise<GymExercise> {
+  const response = await api.delete(`/gym/exercises/${id}`);
+
+  return response.data;
+}

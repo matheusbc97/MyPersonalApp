@@ -4,6 +4,7 @@ import {
   Card,
   DeleteIconButton,
   EditFab,
+  InfoWithLabel,
   Row,
   ScreenWrapper,
   Text,
@@ -48,20 +49,6 @@ function CreateTouristSpotListItem() {
     <Card style={{marginVertical: 5, alignItems: 'center'}}>
       <Text>Criar Ponto Turístico</Text>
     </Card>
-  );
-}
-
-interface InfoWithLabelProps {
-  label: string;
-  text: string;
-}
-
-function InfoWithLabel({label, text}: InfoWithLabelProps) {
-  return (
-    <View style={{marginVertical: 3}}>
-      <Text type="label">{label}:</Text>
-      <Text>{text}</Text>
-    </View>
   );
 }
 

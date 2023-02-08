@@ -8,7 +8,7 @@ import {
   SubHeader,
 } from '@/shared/components';
 import {ScreenProps} from '@/shared/types';
-import useCreateGymTraining from '../../../shared/hooks/requests/gym/trainings/useCreateGymTraining';
+import useCreateGymTraining from '../../../../shared/hooks/requests/gym/trainings/useCreateGymTraining';
 
 function CreateGymTraining({navigation}: ScreenProps<'CreateGymTraining'>) {
   const formRef = useRef<GymTrainingFormHandles>(null);

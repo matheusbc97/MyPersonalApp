@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
 
 import theme from '@/assets/theme';
@@ -11,7 +11,12 @@ interface CardProps {
   row?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({children, style, onPress, row = false}) => {
+const Card = ({
+  children,
+  style,
+  onPress,
+  row = false,
+}: PropsWithChildren<CardProps>) => {
   const getStyle = () => {
     const containerStyle: ViewStyle = {
       backgroundColor: theme.surface,

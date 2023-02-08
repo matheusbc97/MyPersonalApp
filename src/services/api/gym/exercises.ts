@@ -3,6 +3,7 @@ import {
   getGymExercisesRequest,
   createGymExerciseRequest,
   updateGymExerciseRequest,
+  deleteGymExerciseRequest,
 } from '@/requests';
 import {GymExercise} from '@/shared/types';
 import mockRequest from '@/shared/utils/mockRequest';
@@ -28,6 +29,13 @@ export function createGymExercisesService(params: CreateGymExercisesParams) {
 export function updateGymExercisesService(params: UpdateGymExercisesParams) {
   return apiService({
     api: updateGymExerciseRequest(params),
+    mock: mockRequest(null),
+  });
+}
+
+export function deleteGymExerciseService(trainingId: number): Promise<void> {
+  return apiService({
+    api: deleteGymExerciseRequest(trainingId),
     mock: mockRequest(null),
   });
 }

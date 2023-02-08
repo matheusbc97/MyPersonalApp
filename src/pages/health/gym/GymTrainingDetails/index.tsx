@@ -27,7 +27,6 @@ const GymTrainingDetails = ({
   );
 
   const deleteGym = useDeleteGymTraining({
-    trainingId: gymTraining.id,
     onSuccess: () => {
       navigation.pop();
     },
@@ -46,9 +45,8 @@ const GymTrainingDetails = ({
   };
 
   const handleOnGymExercisePress = (gymExercise: GymExercise) => {
-    navigation.navigate('UpdateGymExerciseForm', {
+    navigation.navigate('GymExerciseDetails', {
       gymExercise: gymExercise,
-      gymTrainingId: gymTraining.id,
     });
   };
 
@@ -77,10 +75,7 @@ const GymTrainingDetails = ({
       </ScrollView>
 
       <Row style={{marginHorizontal: 5}}>
-        <DeleteIconButton
-          style={{marginHorizontal: 5}}
-          onPress={handleDeleteGymTraining}
-        />
+        <DeleteIconButton onPress={handleDeleteGymTraining} />
 
         <EditIconButton onPress={handleEditGymTraining} />
 
