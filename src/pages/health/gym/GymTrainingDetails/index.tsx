@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView, View} from 'react-native';
+import React, {useRef} from 'react';
+import {ScrollView} from 'react-native';
 
 import {
   ScreenWrapper,
@@ -10,17 +10,21 @@ import {
   Row,
   DeleteIconButton,
   EditIconButton,
+  DeleteModal,
+  DeleteModalHandles,
 } from '@/shared/components';
 import TitleWithSeparator from '@/shared/components/section-headers/TitleWithSeparatorSectionHeader';
 import {useFetchGymExercises} from '@/shared/hooks';
 import {GymExercise, ScreenProps} from '@/shared/types';
 import useDeleteGymTraining from '@/shared/hooks/requests/gym/trainings/useDeleteGymTraining';
+import Column from '@/shared/components/containers/Column';
 
 const GymTrainingDetails = ({
   navigation,
   route,
 }: ScreenProps<'GymTrainingDetails'>) => {
   const gymTraining = route.params.gymTraining;
+  const deleteModalRef = useRef<DeleteModalHandles>(null);
 
   const {gymExercises, hasError, isLoading} = useFetchGymExercises(
     gymTraining.id,
@@ -51,7 +55,7 @@ const GymTrainingDetails = ({
   };
 
   const handleDeleteGymTraining = () => {
-    deleteGym(gymTraining.id);
+    deleteModalRef.current?.open(gymTraining.name);
   };
 
   return (
@@ -74,15 +78,20 @@ const GymTrainingDetails = ({
         />
       </ScrollView>
 
-      <Row style={{marginHorizontal: 5}}>
+      <Row mh={5}>
         <DeleteIconButton onPress={handleDeleteGymTraining} />
 
         <EditIconButton onPress={handleEditGymTraining} />
 
-        <View style={{flex: 1}} />
+        <Column flex={1} />
 
         <CreateFab onPress={handleCreateGymExercise} />
       </Row>
+
+      <DeleteModal
+        onConfirmPress={() => deleteGym(gymTraining.id)}
+        ref={deleteModalRef}
+      />
     </ScreenWrapper>
   );
 };

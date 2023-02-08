@@ -1,4 +1,3 @@
-import {useGoBackOnlyOneTime} from '@/shared/hooks';
 import React from 'react';
 
 import TextButton, {TextButtonProps} from '../../TextButton';
@@ -8,9 +7,7 @@ const CancelTextButton = ({
   onPress,
   ...rest
 }: TextButtonProps) => {
-  const goBack = useGoBackOnlyOneTime();
-
-  return <TextButton text={text} onPress={onPress ?? goBack} {...rest} />;
+  return <TextButton text={text} onPress={onPress} {...rest} />;
 };
 
 export default CancelTextButton;

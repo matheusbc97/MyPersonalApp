@@ -13,7 +13,7 @@ import CreateFab from './buttons/filled/fabs/CreateFab';
 import Chip from './Chip';
 import FiltersSelect from './FiltersSelect';
 import TitleWithTotalSectionHeader from './section-headers/TitleWithTotalSectionHeader';
-import Modal from './modals/Modal';
+import Modal, {ModalHandles} from './modals/Modal';
 import RadioInput from './inputs/RadioInput';
 import Circle from './Circle';
 import SaveContainedButton from './buttons/filled/contained-buttons/SaveContainedButton';
@@ -74,6 +74,7 @@ import EditFab from './buttons/filled/fabs/EditFab';
 import CountryInput from './inputs/CountryInput';
 import CityListItem from './lists-items/CityListItem';
 import InfoWithLabel from './InfoWithLabel';
+import DeleteModal, {DeleteModalHandles} from './modals/DeleteModal';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -148,6 +149,7 @@ export {
   CountryInput,
   CityListItem,
   InfoWithLabel,
+  DeleteModal,
 };
 
 export type {
@@ -158,4 +160,6 @@ export type {
   IFinanceForm,
   GymTrainingFormHandles,
   IGymTrainingForm,
+  ModalHandles,
+  DeleteModalHandles,
 };
