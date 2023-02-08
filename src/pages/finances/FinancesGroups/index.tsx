@@ -1,21 +1,11 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {RouteProp} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
 
 import {GroupListItem, ScreenWrapper} from '@/shared/components';
-import {StackParams} from '@/navigation';
-import {useGoBackOnlyOneTime} from '@/shared/hooks';
 import {groups} from '@/mocks/groups';
+import {ScreenProps} from '@/shared/types';
 
-interface Props {
-  route: RouteProp<StackParams, 'FinancesGroups'>;
-  navigation: StackNavigationProp<StackParams, 'FinancesGroups'>;
-}
-
-const FinancesGroups = ({route}: Props) => {
-  const goBack = useGoBackOnlyOneTime();
-
+const FinancesGroups = ({route, navigation}: ScreenProps<'FinancesGroups'>) => {
   return (
     <ScreenWrapper>
       <FlatList
@@ -26,7 +16,7 @@ const FinancesGroups = ({route}: Props) => {
             group={group}
             onPress={() => {
               route.params.onSelectGroup(group);
-              goBack();
+              navigation.pop();
             }}
           />
         )}

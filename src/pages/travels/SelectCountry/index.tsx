@@ -2,7 +2,6 @@ import React from 'react';
 import {FlatList} from 'react-native';
 
 import {Card, ScreenWrapper, Text} from '@/shared/components';
-import {useGoBackOnlyOneTime} from '@/shared/hooks';
 import {countries} from '@/mocks/countries';
 import {Country, ScreenProps} from '@/shared/types';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -31,9 +30,7 @@ function CountryListItem({country, onPress}: CountryListItemProps) {
   );
 }
 
-const SelectCountry = ({route}: ScreenProps<'SelectCountry'>) => {
-  const goBack = useGoBackOnlyOneTime();
-
+const SelectCountry = ({route, navigation}: ScreenProps<'SelectCountry'>) => {
   return (
     <ScreenWrapper>
       <FlatList
@@ -44,7 +41,7 @@ const SelectCountry = ({route}: ScreenProps<'SelectCountry'>) => {
             country={country}
             onPress={() => {
               route.params.onSelectCountry(country);
-              goBack();
+              navigation.pop();
             }}
           />
         )}

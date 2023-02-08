@@ -1,4 +1,4 @@
-import {useGoBackOnlyOneTime} from '@/shared/hooks';
+import {useNavigation} from '@react-navigation/native';
 import CancelTextButton from './filled/text-buttons/CancelTextButton';
 
 import {TextButtonProps} from './TextButton';
@@ -6,9 +6,9 @@ import {TextButtonProps} from './TextButton';
 const CancelTextButtonWithGoBack = (
   props: Omit<TextButtonProps, 'onPress'>,
 ) => {
-  const goBack = useGoBackOnlyOneTime();
+  const navigation = useNavigation<any>();
 
-  return <CancelTextButton onPress={goBack} {...props} />;
+  return <CancelTextButton onPress={() => navigation.pop()} {...props} />;
 };
 
 export default CancelTextButtonWithGoBack;

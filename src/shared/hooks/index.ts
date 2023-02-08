@@ -1,5 +1,4 @@
 import useFetchFinances from './requests/useFetchFinances';
-import useGoBackOnlyOneTime from './useGoBackOnlyOneTime';
 import useForm from './useForm';
 import useFetchFinancesNotes from './requests/useFetchFinancesNotes';
 import useFetchBanks from './requests/useFetchBanks';
@@ -13,7 +12,6 @@ import useDeleteGymExercise from './requests/gym/exercises/useDeleteGymExercise'
 
 export {
   useFetchFinances,
-  useGoBackOnlyOneTime,
   useForm,
   useFetchFinancesNotes,
   useFetchBanks,

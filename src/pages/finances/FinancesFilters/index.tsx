@@ -13,7 +13,7 @@ import {
   DateInput,
   GroupInput,
 } from '@/shared/components';
-import {useGoBackOnlyOneTime, useForm} from '@/shared/hooks';
+import {useForm} from '@/shared/hooks';
 import validations from '@/shared/utils/validations';
 import {Group} from '@/shared/types';
 
@@ -46,9 +46,7 @@ const initialFormState: FinancesFilterForm = {
   until: null,
 };
 
-const FinancesFilters = ({route}: Props) => {
-  const goBack = useGoBackOnlyOneTime();
-
+const FinancesFilters = ({route, navigation}: Props) => {
   const {handleValueChange, values, handleFormInputProps, submitForm} = useForm(
     route.params.initialFormState ?? initialFormState,
     validationScheme,
@@ -75,17 +73,14 @@ const FinancesFilters = ({route}: Props) => {
       <Row spaceBetween style={{marginTop: 30}}>
         <View />
         <Row>
-          <CancelTextButtonWithGoBack
-            style={{marginRight: 10}}
-            onPress={goBack}
-          />
+          <CancelTextButtonWithGoBack style={{marginRight: 10}} />
           <SaveContainedButton
             onPress={() => {
               const {isValid, form} = submitForm();
 
               if (isValid) {
                 route.params.onFiltersSelect(form);
-                goBack();
+                navigation.pop();
               }
             }}
           />
