@@ -4,7 +4,7 @@ import {
   ScreenWrapper,
   Row,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   DueDayTextInput,
   LastFourDigitsTextInput,
   ExpiringDateInput,
@@ -77,7 +77,7 @@ const CreateCreditCard = ({route}: ScreenProps<'CreateCreditCardForm'>) => {
       </View>
 
       <Row flexEnd style={{marginTop: 20}}>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={handleSavePress} />
       </Row>
     </ScreenWrapper>

@@ -6,7 +6,7 @@ import {
   NameTextInput,
   Row,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
 } from '@/shared/components';
 import useForm from '@/shared/hooks/useForm';
 import validations from '@/shared/utils/validations';
@@ -66,7 +66,7 @@ const CreateBankForm = ({navigation, route}: ScreenProps<'CreateBankForm'>) => {
       </View>
 
       <Row flexEnd style={{marginTop: 20}}>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={handleSavePress} />
       </Row>
     </ScreenWrapper>

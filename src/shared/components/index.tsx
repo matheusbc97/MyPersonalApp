@@ -75,6 +75,8 @@ import CountryInput from './inputs/CountryInput';
 import CityListItem from './lists-items/CityListItem';
 import InfoWithLabel from './InfoWithLabel';
 import DeleteModal, {DeleteModalHandles} from './modals/DeleteModal';
+import DeleteIconButtonWithDeleteModal from './buttons/DeleteIconButtonWithDeleteModal';
+import CancelTextButtonWithGoBack from './buttons/CancelTextButtonWithGoBack';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -150,6 +152,8 @@ export {
   CityListItem,
   InfoWithLabel,
   DeleteModal,
+  DeleteIconButtonWithDeleteModal,
+  CancelTextButtonWithGoBack,
 };
 
 export type {

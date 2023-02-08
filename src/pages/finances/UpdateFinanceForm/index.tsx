@@ -4,7 +4,7 @@ import {
   ScreenWrapper,
   Row,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   FinanceForm,
   IFinanceForm,
   FinanceFormHandles,
@@ -100,7 +100,7 @@ function UpdateFinanceFormPage({
         value={paid}
       />
       <Row flexEnd style={{marginTop: 20}}>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={() => financeFormRef.current?.submit()} />
       </Row>
     </ScreenWrapper>

@@ -4,7 +4,7 @@ import {
   ScreenWrapper,
   Row,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   GymExercisesFormList,
 } from '@/shared/components';
 import {GymExercisesFormListHandles} from '@/shared/components/forms/GymExercisesFormList';
@@ -42,7 +42,7 @@ const CreateGymExerciseForm = ({
       <GymExercisesFormList ref={formRef} style={{flex: 1}} />
 
       <Row flexEnd style={{marginTop: 20}}>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={submitForm} />
       </Row>
     </ScreenWrapper>

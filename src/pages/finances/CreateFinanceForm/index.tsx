@@ -4,7 +4,7 @@ import {
   ScreenWrapper,
   Row,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   FinanceForm,
   IFinanceForm,
   FinanceFormHandles,
@@ -68,7 +68,7 @@ function CreateFinanceForm({route, navigation}: Props) {
         onSubmitSuccess={handleSubmitSuccess}
       />
       <Row flexEnd style={{marginTop: 20}}>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={() => financeFormRef.current?.submit()} />
       </Row>
     </ScreenWrapper>

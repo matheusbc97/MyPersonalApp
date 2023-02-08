@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   CountryInput,
   DescriptionTextInput,
   NameTextInput,
@@ -50,7 +50,7 @@ export default function CreateNewCityLinkPage() {
         <DescriptionTextInput formProps={handleFormInputProps('description')} />
       </View>
       <Row flexEnd>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton />
       </Row>
     </ScreenWrapper>

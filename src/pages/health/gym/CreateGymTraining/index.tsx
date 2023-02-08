@@ -1,14 +1,16 @@
 import React, {useRef} from 'react';
 
 import {
+  CancelTextButtonWithGoBack,
   GymTrainingForm,
   GymTrainingFormHandles,
+  Row,
   SaveContainedButton,
   ScreenWrapper,
   SubHeader,
 } from '@/shared/components';
 import {ScreenProps} from '@/shared/types';
-import useCreateGymTraining from '../../../../shared/hooks/requests/gym/trainings/useCreateGymTraining';
+import useCreateGymTraining from '@/shared/hooks/requests/gym/trainings/useCreateGymTraining';
 
 function CreateGymTraining({navigation}: ScreenProps<'CreateGymTraining'>) {
   const formRef = useRef<GymTrainingFormHandles>(null);
@@ -27,10 +29,10 @@ function CreateGymTraining({navigation}: ScreenProps<'CreateGymTraining'>) {
         initialState={{name: ''}}
         onSubmitSuccess={handleGymTrainingSubmitSuccess}
       />
-      <SaveContainedButton
-        style={{alignSelf: 'flex-end'}}
-        onPress={() => formRef.current?.submit()}
-      />
+      <Row flexEnd>
+        <CancelTextButtonWithGoBack />
+        <SaveContainedButton onPress={() => formRef.current?.submit()} />
+      </Row>
     </ScreenWrapper>
   );
 }

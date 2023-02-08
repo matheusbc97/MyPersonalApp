@@ -9,7 +9,7 @@ import {
   Row,
   PaidRadioListInput,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   DateInput,
   GroupInput,
 } from '@/shared/components';
@@ -75,7 +75,10 @@ const FinancesFilters = ({route}: Props) => {
       <Row spaceBetween style={{marginTop: 30}}>
         <View />
         <Row>
-          <CancelTextButton style={{marginRight: 10}} onPress={goBack} />
+          <CancelTextButtonWithGoBack
+            style={{marginRight: 10}}
+            onPress={goBack}
+          />
           <SaveContainedButton
             onPress={() => {
               const {isValid, form} = submitForm();

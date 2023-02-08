@@ -8,8 +8,8 @@ import Button from './Button';
 export interface IconButtonProps {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
-  iconName?: string;
   size?: number;
+  iconName?: string;
   fontFamily?: 'FontAwesome' | 'FontAwesome5';
 }
 

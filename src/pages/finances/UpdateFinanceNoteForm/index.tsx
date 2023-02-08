@@ -7,7 +7,7 @@ import {
   ScreenWrapper,
   Row,
   SaveContainedButton,
-  CancelTextButton,
+  CancelTextButtonWithGoBack,
   FinanceNoteForm,
   FinanceNoteFormHandles,
 } from '@/shared/components';
@@ -61,7 +61,7 @@ const UpdateFinanceNoteForm = ({navigation, route}: Props) => {
       />
 
       <Row flexEnd style={{marginTop: 20}}>
-        <CancelTextButton />
+        <CancelTextButtonWithGoBack />
         <SaveContainedButton
           style={{marginLeft: 5}}
           onPress={() => formRef.current?.submit()}
