@@ -8,15 +8,18 @@ import Row from '../containers/Row';
 import Text from '../Text';
 import IconButton from '../buttons/IconButton';
 import Separator from '../Separator';
+import {GymExercisesItem} from '@/shared/types/GymExercise';
 
 interface GymExerciseListItemProps {
   gymExercise: GymExercise;
   onPress: () => void;
+  onChangeWeightPress: (gymExerciseItem: GymExercisesItem) => void;
 }
 
 const GymExerciseListItem = ({
   gymExercise,
   onPress,
+  onChangeWeightPress,
 }: GymExerciseListItemProps) => {
   return (
     <Card onPress={onPress} style={{paddingVertical: 10, marginVertical: 5}}>
@@ -29,12 +32,13 @@ const GymExerciseListItem = ({
             </Text>
           </Row>
           <Row spaceBetween style={{marginTop: 4}}>
-            <Text>Peso: 4kg</Text>
+            <Text>Peso: {gymExerciseData.weight}kg</Text>
             <IconButton
               size={20}
               iconName="dumbbell"
               fontFamily="FontAwesome5"
               style={{padding: 0}}
+              onPress={() => onChangeWeightPress(gymExerciseData)}
             />
           </Row>
           {index !== gymExercise.exercisesItems.length - 1 && (

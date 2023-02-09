@@ -11,6 +11,7 @@ export interface IconButtonProps {
   size?: number;
   iconName?: string;
   fontFamily?: 'FontAwesome' | 'FontAwesome5';
+  disabled?: boolean;
 }
 
 const IconButton = ({
@@ -19,9 +20,11 @@ const IconButton = ({
   iconName,
   size = 30,
   fontFamily = 'FontAwesome',
+  disabled,
 }: IconButtonProps) => {
   return (
     <Button
+      disabled={disabled}
       onPress={onPress}
       style={[
         {

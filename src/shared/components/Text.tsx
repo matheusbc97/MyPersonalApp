@@ -8,7 +8,13 @@ import {
 import theme from '@/assets/theme';
 
 interface TextProps extends RNTextProps {
-  type?: 'default' | 'title' | 'secondary' | 'big' | 'label';
+  type?:
+    | 'default'
+    | 'title'
+    | 'secondary'
+    | 'big'
+    | 'label'
+    | 'title-extra-big';
   textAlign?: 'auto' | 'right' | 'left' | 'justify' | 'center';
 }
 
@@ -28,6 +34,13 @@ const Text: React.FC<TextProps> = ({
           color: theme.text,
           fontWeight: 'bold',
           fontSize: 16,
+        };
+        break;
+      case 'title-extra-big':
+        textStyle = {
+          color: theme.text,
+          fontWeight: 'bold',
+          fontSize: 22,
         };
         break;
       case 'secondary':

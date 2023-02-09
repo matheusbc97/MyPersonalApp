@@ -4,16 +4,16 @@ export interface CreateGymTrainingParams {
 
 export interface UpdateGymTrainingParams {
   name: string;
-  id: string;
+  id: number;
 }
 
 export interface UpdateGymTrainingParams {
-  id: string;
+  id: number;
   name: string;
 }
 
 export interface CreateGymExercisesParams {
-  trainingId: string;
+  trainingId: number;
   exercisesItems: {
     name: string;
     weight: string;
@@ -23,11 +23,19 @@ export interface CreateGymExercisesParams {
 }
 
 export interface UpdateGymExercisesParams {
-  id: string;
+  id: number;
   exercisesItems: {
     name: string;
     weight: string;
     series: number;
     repetitions: number;
   }[];
+}
+
+export interface UpdateGymExerciseItemParams {
+  id: number;
+  name?: string;
+  weight?: string;
+  series?: number;
+  repetitions?: number;
 }

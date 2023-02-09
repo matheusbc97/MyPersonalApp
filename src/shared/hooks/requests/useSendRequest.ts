@@ -12,9 +12,15 @@ export interface SendRequestOptions {
   onSettled?: () => void;
 }
 
-interface UseSendRequestProps extends SendRequestOptions {
-  promise: ActionThunk;
-  keyToInvalidate: string | (string | number)[] | (string | number)[][];
+type KeyToInvalidate = string | (string | number)[];
+
+interface UseSendRequestProps<T> extends SendRequestOptions {
+  promise: T;
+  keyToInvalidate?: KeyToInvalidate;
+}
+
+interface MutateOptions {
+  keyToInvalidate: KeyToInvalidate;
 }
 
 function useSendRequest<T extends ActionThunk>({
@@ -23,19 +29,12 @@ function useSendRequest<T extends ActionThunk>({
   onSuccess,
   onError,
   onSettled,
-}: UseSendRequestProps) {
+}: UseSendRequestProps<T>) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(promise, {
     onSuccess: () => {
-      if (Array.isArray(keyToInvalidate) && Array.isArray(keyToInvalidate[0])) {
-        keyToInvalidate.forEach((key: any) => {
-          queryClient.invalidateQueries(key);
-        });
-      } else {
-        console.log('keyToInvalidate', keyToInvalidate);
-        queryClient.invalidateQueries(keyToInvalidate);
-      }
+      keyToInvalidate && queryClient.invalidateQueries(keyToInvalidate);
       onSuccess?.();
     },
     onError: error => {
@@ -51,11 +50,17 @@ function useSendRequest<T extends ActionThunk>({
   });
 
   const mutate = useCallback(
-    (params: Parameters<T>) => {
+    (params: Parameters<T>[0], options?: MutateOptions) => {
       loaderHandler.showLoader();
-      mutation.mutate(params);
+      mutation.mutate(params, {
+        onSuccess: () => {
+          if (options?.keyToInvalidate) {
+            queryClient.invalidateQueries(options.keyToInvalidate);
+          }
+        },
+      });
     },
-    [mutation],
+    [mutation, queryClient],
   );
 
   return mutate;

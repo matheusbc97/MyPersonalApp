@@ -1,10 +1,11 @@
 export interface GymExercise {
-  id: string;
+  id: number;
   exercisesItems: GymExercisesItem[];
 }
 
 export interface GymExercisesItem {
-  name: string;
+  id: number;
+  name: number;
   weight: string;
   series: number;
   repetitions: number;

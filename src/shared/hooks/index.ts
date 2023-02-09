@@ -9,6 +9,7 @@ import useFetchGymExercises from './requests/gym/exercises/useFetchGymExercises'
 import useCreateFinanceNote from './requests/create/useCreateFinanceNote';
 import useSendRequest from './requests/useSendRequest';
 import useDeleteGymExercise from './requests/gym/exercises/useDeleteGymExercise';
+import useUpdateGymExerciseItem from './requests/gym/exerciseItems/useUpdateGymExerciseItem';
 
 export {
   useFetchFinances,
@@ -22,4 +23,5 @@ export {
   useCreateFinanceNote,
   useSendRequest,
   useDeleteGymExercise,
+  useUpdateGymExerciseItem,
 };

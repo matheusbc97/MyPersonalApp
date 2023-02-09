@@ -77,6 +77,8 @@ import InfoWithLabel from './InfoWithLabel';
 import DeleteModal, {DeleteModalHandles} from './modals/DeleteModal';
 import DeleteIconButtonWithDeleteModal from './buttons/DeleteIconButtonWithDeleteModal';
 import CancelTextButtonWithGoBack from './buttons/CancelTextButtonWithGoBack';
+import WeightModal, {WeightModalHandles} from './modals/WeightModal';
+import Icon from './Icon';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -154,6 +156,8 @@ export {
   DeleteModal,
   DeleteIconButtonWithDeleteModal,
   CancelTextButtonWithGoBack,
+  WeightModal,
+  Icon,
 };
 
 export type {
@@ -166,4 +170,5 @@ export type {
   IGymTrainingForm,
   ModalHandles,
   DeleteModalHandles,
+  WeightModalHandles,
 };
