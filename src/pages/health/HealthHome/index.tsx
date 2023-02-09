@@ -23,7 +23,7 @@ function HealthHome({navigation}: Props) {
         <MenuGridItem
           iconName="balance-scale"
           title="Pesos"
-          onPress={() => {}}
+          onPress={() => navigation.navigate('WeightList')}
         />
         <MenuGridItem
           iconName="stethoscope"

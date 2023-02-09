@@ -47,6 +47,7 @@ import CityDetails from '@/pages/travels/CityDetails';
 import CreateNewCityLink from '@/pages/travels/CreateNewCityLink';
 import Cities from '@/pages/travels/Cities';
 import GymExerciseDetails from '@/pages/health/gym/GymExerciseDetails';
+import WeightListPage from '@/pages/health/weights/WeightListPage';
 
 export type StackParams = {
   Home: undefined;
@@ -107,6 +108,7 @@ export type StackParams = {
   GymExerciseDetails: {
     gymExercise: GymExercise;
   };
+  WeightList: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParams>();
@@ -338,6 +340,13 @@ function MyStack() {
             headerTitle: 'Exercício',
           }}
           component={GymExerciseDetails}
+        />
+        <Stack.Screen
+          name="WeightList"
+          options={{
+            headerTitle: 'Pesos',
+          }}
+          component={WeightListPage}
         />
       </Stack.Navigator>
     </NavigationContainer>

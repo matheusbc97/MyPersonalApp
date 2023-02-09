@@ -1,6 +1,7 @@
+import {useRef} from 'react';
+
 import {WeightModalHandles} from '@/shared/components';
 import {useUpdateGymExerciseItem} from '@/shared/hooks';
-import {useRef} from 'react';
 
 interface GymExerciseIdsToBeDeleted {
   exerciseId: number;

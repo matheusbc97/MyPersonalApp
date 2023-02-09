@@ -28,6 +28,7 @@ import {CustomError} from './CustomError';
 import {CustomApiErrorCode} from './CustomApiErrorCode';
 import {FormHandles} from './FormHandles';
 import {ScreenProps} from './ScreenProps';
+import {Weight} from './Weight';
 
 export type {
   Finance,
@@ -56,4 +57,5 @@ export type {
   ScreenProps,
   Country,
   City,
+  Weight,
 };

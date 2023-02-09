@@ -12,8 +12,7 @@ import EmptyListText from './EmptyListText';
 import ErrorMessage from './ErrorMessage';
 import ActivityIndicator from './ActivityIndicator';
 
-export interface FlatListWithFetchIndicatorProps<T>
-  extends FlatListProps<T> {
+export interface FlatListWithFetchIndicatorProps<T> extends FlatListProps<T> {
   isLoading: boolean;
   hasError: boolean;
   emptyListText: string;
