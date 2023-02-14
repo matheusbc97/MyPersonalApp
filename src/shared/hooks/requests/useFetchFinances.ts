@@ -1,14 +1,18 @@
+import {useQuery} from 'react-query';
+import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {fetchFinancesService} from '@/services/api/FinanceServices';
-import useRequest from './useRequest';
 
 const useFetchFinances = () => {
-  const {data, getData, hasError, isLoading} = useRequest(fetchFinancesService);
+  const {data, isError, isLoading, refetch} = useQuery(
+    QUERY_KEYS.FINANCES,
+    fetchFinancesService,
+  );
 
   return {
     finances: data ?? [],
-    getFinances: getData,
+    refetchFinances: refetch,
     isLoading,
-    hasError,
+    hasError: isError,
   };
 };
 

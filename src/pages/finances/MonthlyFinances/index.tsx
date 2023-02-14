@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
 
 import {
   ScreenWrapper,
@@ -12,16 +11,11 @@ import {
   TitleWithTotalSectionHeader,
   SectionListWithFetchIndicator,
 } from '@/shared/components';
-import {StackParams} from '@/navigation';
 import {useFetchFinances} from '@/shared/hooks';
 
 import {FinancesFilterForm} from '@/pages/finances/FinancesFilters';
 import formatDate from '@/shared/utils/formatDate';
-import {Group} from '@/shared/types';
-
-interface Props {
-  navigation: StackNavigationProp<StackParams, 'Home'>;
-}
+import {Group, ScreenProps} from '@/shared/types';
 
 const getFilterLabel = (filterKey: keyof FinancesFilterForm, value: any) => {
   switch (filterKey) {
@@ -38,15 +32,9 @@ const getFilterLabel = (filterKey: keyof FinancesFilterForm, value: any) => {
   }
 };
 
-const MonthlyFinances: React.FC<Props> = ({navigation}) => {
+function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
   const [filters, setFilters] = useState<FinancesFilterForm | null>(null);
-  const {finances, getFinances, hasError, isLoading} = useFetchFinances();
-
-  useEffect(() => {
-    getFinances();
-  }, [getFinances]);
-
-  console.log('finances', finances);
+  const {finances, refetchFinances, hasError, isLoading} = useFetchFinances();
 
   const lsFilters = filters
     ? Object.keys(filters)
@@ -65,13 +53,13 @@ const MonthlyFinances: React.FC<Props> = ({navigation}) => {
         isLoading={isLoading}
         sections={finances}
         keyExtractor={item => item.id}
-        onRefresh={getFinances}
+        onRefresh={refetchFinances}
         renderItem={({item: finance}) => (
           <FinanceListItem
             onPress={() =>
               navigation.navigate('UpdateFinanceForm', {
                 finance,
-                onFinanceUpdated: getFinances,
+                onFinanceUpdated: () => {},
               })
             }
             finance={finance}
@@ -112,6 +100,6 @@ const MonthlyFinances: React.FC<Props> = ({navigation}) => {
       </Row>
     </ScreenWrapper>
   );
-};
+}
 
 export default MonthlyFinances;
