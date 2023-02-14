@@ -10,11 +10,8 @@ import {
   FinanceFormHandles,
 } from '@/shared/components';
 
-import {createFinanceService} from '@/services/api/FinanceServices';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {StackParams} from '@/navigation';
-import {RouteProp} from '@react-navigation/core';
-import {loaderHandler} from '@/shared/components/LoadingHandler';
+import {ScreenProps} from '@/shared/types';
+import useCreateFinance from '@/shared/hooks/requests/finances/useCreateFinance';
 
 const formInitialState: IFinanceForm = {
   name: '',
@@ -27,37 +24,27 @@ const formInitialState: IFinanceForm = {
   fixedDate: true,
 };
 
-interface Props {
-  navigation: StackNavigationProp<StackParams, 'CreateFinanceForm'>;
-  route: RouteProp<StackParams, 'CreateFinanceForm'>;
-}
-
-function CreateFinanceForm({route, navigation}: Props) {
+function CreateFinanceForm({navigation}: ScreenProps<'CreateFinanceForm'>) {
   const financeFormRef = useRef<FinanceFormHandles>(null);
 
   useEffect(() => {
     financeFormRef.current?.form.name?.focus();
   }, [financeFormRef]);
 
-  const handleSubmitSuccess = async (form: IFinanceForm) => {
-    loaderHandler.showLoader();
-
-    try {
-      await createFinanceService({
-        amount: Number(form.amount),
-        currencyValue: form.currency!.value,
-        fixedDate: true,
-        day: Number(form.day),
-        name: form.name,
-        paymentMethod: form.paymentMethod,
-        type: form.type!,
-      });
-
-      route.params.onFinanceCreated();
+  const createFinance = useCreateFinance({
+    onSuccess: () => {
       navigation.pop();
-    } catch (error) {}
+    },
+  });
 
-    loaderHandler.hideLoader();
+  const handleSubmitSuccess = async (form: IFinanceForm) => {
+    createFinance({
+      amount: Number(form.amount),
+      fixedDate: true,
+      day: Number(form.day),
+      name: form.name,
+      paymentMethod: form.paymentMethod,
+    });
   };
 
   return (

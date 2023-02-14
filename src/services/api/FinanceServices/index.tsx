@@ -3,24 +3,30 @@ import {getFinancesSectionMock} from '@/mocks/finances';
 
 import apiService from '../apiService';
 
-import {SectionDataWithTotal, Finance} from '@/shared/types';
 import {
   CreateFinanceParams,
+  FetchMonthlyFinancesParams,
+  FetchMonthlyFinancesResponse,
   PayFinanceParams,
   UpdateFinanceParams,
 } from './types';
 import {mockCreateFinance, mockUpdateFinance} from '@/mocks';
 import {
-  fetchFinances,
   createFinance,
   payFinance,
   updateFinance,
   deletePaymentOfFinance,
 } from '@/shared/firebase/finances';
+import {
+  createFinancesRequest,
+  fetchMonthlyFinancesRequest,
+} from '@/requests/finances/finances';
 
-export function fetchFinancesService(): Promise<SectionDataWithTotal<Finance>> {
+export function fetchFinancesService(
+  params: FetchMonthlyFinancesParams,
+): Promise<FetchMonthlyFinancesResponse[]> {
   return apiService({
-    api: fetchFinances(),
+    api: fetchMonthlyFinancesRequest(params),
     mock: mockRequest(getFinancesSectionMock()),
   });
 }
@@ -29,7 +35,7 @@ export function createFinanceService(
   params: CreateFinanceParams,
 ): Promise<void> {
   return apiService({
-    api: createFinance(params),
+    api: createFinancesRequest(params),
     mock: mockRequest(mockCreateFinance(params)),
   });
 }

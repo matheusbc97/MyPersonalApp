@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import {useState} from 'react';
 
 import {
   ScreenWrapper,
@@ -14,36 +13,25 @@ import {
 import {useFetchFinances} from '@/shared/hooks';
 
 import {FinancesFilterForm} from '@/pages/finances/FinancesFilters';
-import formatDate from '@/shared/utils/formatDate';
-import {Group, ScreenProps} from '@/shared/types';
+import {ScreenProps} from '@/shared/types';
+import getYearAndMonth from './utils/getYearAndMonth';
 
-const getFilterLabel = (filterKey: keyof FinancesFilterForm, value: any) => {
-  switch (filterKey) {
-    case 'from':
-      return `>= ${formatDate(value)}`;
-    case 'group':
-      const group = value as Group;
-
-      return `${group.title}`;
-    case 'paid':
-      return 'Pago';
-    case 'until':
-      return `<= ${formatDate(value)}`;
-  }
-};
+import {FetchMonthlyFinancesParams} from '@/services/api/FinanceServices/types';
+import getActiveFilters from './utils/getActiveFilters';
 
 function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
   const [filters, setFilters] = useState<FinancesFilterForm | null>(null);
-  const {finances, refetchFinances, hasError, isLoading} = useFetchFinances();
 
-  const lsFilters = filters
-    ? Object.keys(filters)
-        .filter(key => filters[key])
-        .map(key => ({
-          label: getFilterLabel(key, filters[key]),
-          value: filters[key],
-        }))
-    : [];
+  const [financesParams, setFinancesParams] =
+    useState<FetchMonthlyFinancesParams>({
+      yearAndMonthStart: getYearAndMonth(-1),
+      yearAndMonthEnd: getYearAndMonth(1),
+    });
+
+  const {finances, refetchFinances, hasError, isLoading} =
+    useFetchFinances(financesParams);
+
+  const activeFilters = getActiveFilters(filters);
 
   return (
     <ScreenWrapper>
@@ -52,7 +40,7 @@ function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
         hasError={hasError}
         isLoading={isLoading}
         sections={finances}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         onRefresh={refetchFinances}
         renderItem={({item: finance}) => (
           <FinanceListItem
@@ -65,8 +53,11 @@ function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
             finance={finance}
           />
         )}
-        renderSectionHeader={({section: {title, total}}) => (
-          <TitleWithTotalSectionHeader title={title} total={total} />
+        renderSectionHeader={({section: {year, month, total}}) => (
+          <TitleWithTotalSectionHeader
+            title={month + '/' + year}
+            total={total}
+          />
         )}
         SectionSeparatorComponent={({leadingItem, trailingSection}) => (
           <Separator
@@ -84,19 +75,13 @@ function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
               initialFormState: filters,
             })
           }
-          filters={lsFilters}
-          style={{flex: 2}}
+          filters={activeFilters}
+          style={{flex: 1}}
         />
-        <View style={{flex: 1, alignItems: 'flex-end'}}>
-          <CreateFab
-            iconName="plus"
-            onPress={() =>
-              navigation.navigate('CreateFinanceForm', {
-                onFinanceCreated: getFinances,
-              })
-            }
-          />
-        </View>
+        <CreateFab
+          iconName="plus"
+          onPress={() => navigation.navigate('CreateFinanceForm')}
+        />
       </Row>
     </ScreenWrapper>
   );

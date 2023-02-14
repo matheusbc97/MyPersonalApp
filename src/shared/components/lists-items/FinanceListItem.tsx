@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Finance} from '@/shared/types';
 import {
   Text,
@@ -15,7 +13,8 @@ interface Props {
   onPress: () => void;
 }
 
-const FinanceListItem: React.FC<Props> = ({finance, onPress}) => {
+function FinanceListItem({finance, onPress}: Props) {
+  const isReceipt = finance.amount > 0;
   return (
     <Card onPress={onPress} style={{marginVertical: 5}}>
       <Row>
@@ -27,20 +26,20 @@ const FinanceListItem: React.FC<Props> = ({finance, onPress}) => {
       </Row>
 
       <Text>
-        {finance.type === 'receipt' ? 'Meio Rec' : 'Mei Pag'}:{' '}
-        {finance.paymentMethod}
+        {isReceipt ? 'Meio Rec' : 'Mei Pag'}: {finance.paymentMethod}
       </Text>
 
       <Row style={{marginTop: 5}} spaceBetween>
-        <Text>{finance.fixedDate ? 'Fixo' : 'Variável'}: Dia 25</Text>
+        <Text>
+          {finance.fixedDate ? 'Fixo' : 'Variável'}: Dia {finance.day}
+        </Text>
         <PaymentAmountText
-          type={finance.type}
           amount={finance.amount}
           currency={finance.currencyValue}
         />
       </Row>
     </Card>
   );
-};
+}
 
 export default FinanceListItem;

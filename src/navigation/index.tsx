@@ -55,9 +55,7 @@ export type StackParams = {
   TravelsHome: undefined;
   MonthlyFinances: undefined;
   FinancesFilters: FinancesFiltersPageParams;
-  CreateFinanceForm: {
-    onFinanceCreated: () => void;
-  };
+  CreateFinanceForm: undefined;
   FinancesNotes: undefined;
   CreateFinanceNoteForm: {
     onFinanceNoteCreated: () => void;

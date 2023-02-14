@@ -1,19 +1,21 @@
-import {Group} from '@/shared/types';
 import {CurrencyValue} from './Currency';
 
 export type FinanceType = 'receipt' | 'expense';
 
+interface FinancePayment {
+  id: number;
+  date: Date;
+}
+
 export interface Finance {
-  id: string;
+  id: number;
   paymentMethod: string;
   paid: boolean;
   day: number;
   fixedDate: boolean;
   amount: number;
-  currencyValue: CurrencyValue;
   name: string;
-  type: FinanceType;
-  group: Group;
+  payment: FinancePayment;
 }
 
 export interface MonthlyFinance extends Finance {
