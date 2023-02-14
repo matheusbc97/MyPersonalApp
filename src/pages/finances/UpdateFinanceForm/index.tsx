@@ -14,13 +14,11 @@ import {
 import {
   deletePaymentOfFinanceService,
   payFinanceService,
-  updateFinanceService,
 } from '@/services/api/FinanceServices';
 import getCurrency from '@/shared/utils/getCurrency';
 import {ScreenProps} from '@/shared/types';
-import {loaderHandler} from '@/shared/components/LoadingHandler';
-import handleErrorMessage from '@/shared/utils/handleErrorMessage';
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
+import useUpdateFinance from '@/shared/hooks/requests/finances/useUpdateFinance';
 
 function UpdateFinanceFormPage({
   route,
@@ -29,30 +27,23 @@ function UpdateFinanceFormPage({
   const financeFormRef = useRef<FinanceFormHandles>(null);
   const finance = route.params.finance;
 
-  console.log('finance', finance);
   const [paid, setPaid] = useState(finance.paid);
 
-  const handleSubmitSuccess = async (form: IFinanceForm) => {
-    loaderHandler.showLoader();
+  const updateFinance = useUpdateFinance();
 
+  const handleSubmitSuccess = async (form: IFinanceForm) => {
     try {
-      await updateFinanceService(finance.id, {
+      await updateFinance({
+        id: finance.id,
         amount: Number(form.amount),
-        currencyValue: form.currency!.value,
         fixedDate: true,
         day: Number(form.day),
         name: form.name,
         paymentMethod: form.paymentMethod,
-        type: form.type!,
       });
 
-      route.params.onFinanceUpdated();
       navigation.pop();
-    } catch (error) {
-      handleErrorMessage(error);
-    }
-
-    loaderHandler.hideLoader();
+    } catch {}
   };
 
   const handlePayFinance = async (pay: boolean) => {
@@ -78,20 +69,22 @@ function UpdateFinanceFormPage({
     } catch (error) {}
   };
 
+  const financeInitialState: IFinanceForm = {
+    amount: String(finance.amount),
+    currency: getCurrency(finance.currencyValue),
+    day: String(finance.day),
+    fixedDate: finance.fixedDate,
+    group: finance.group,
+    name: finance.name,
+    paymentMethod: finance.paymentMethod,
+    type: finance.amount > 0 ? 'receipt' : 'expense',
+  };
+
   return (
     <ScreenWrapper>
       <FinanceForm
         ref={financeFormRef}
-        initialState={{
-          amount: String(finance.amount),
-          currency: getCurrency(finance.currencyValue),
-          day: String(finance.day),
-          fixedDate: finance.fixedDate,
-          group: finance.group,
-          name: finance.name,
-          paymentMethod: finance.paymentMethod,
-          type: finance.type,
-        }}
+        initialState={financeInitialState}
         onSubmitSuccess={handleSubmitSuccess}
       />
       <PaidRadioListInput

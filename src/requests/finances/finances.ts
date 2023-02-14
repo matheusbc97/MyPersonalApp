@@ -2,6 +2,7 @@ import {
   CreateFinanceParams,
   FetchMonthlyFinancesParams,
   FetchMonthlyFinancesResponse,
+  UpdateFinanceParams,
 } from '@/services/api/FinanceServices/types';
 import api from '../api';
 
@@ -24,6 +25,15 @@ export async function createFinancesRequest(
   params: CreateFinanceParams,
 ): Promise<CreateFinanceParams[]> {
   const response = await api.post('/finances', params);
+
+  return response.data;
+}
+
+export async function updateFinancesRequest({
+  id,
+  ...params
+}: UpdateFinanceParams): Promise<UpdateFinanceParams[]> {
+  const response = await api.patch(`/finances/${id}`, params);
 
   return response.data;
 }

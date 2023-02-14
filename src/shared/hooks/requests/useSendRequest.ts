@@ -35,7 +35,7 @@ function useSendRequest<T extends ActionThunk>({
   const mutation = useMutation(promise, {
     onSuccess: () => {
       keyToInvalidate && queryClient.invalidateQueries(keyToInvalidate);
-      onSuccess?.();
+      //onSuccess?.();
     },
     onError: error => {
       handleErrorMessage(error);
@@ -44,7 +44,6 @@ function useSendRequest<T extends ActionThunk>({
     },
     onSettled: () => {
       loaderHandler.hideLoader();
-
       onSettled?.();
     },
   });
@@ -52,12 +51,19 @@ function useSendRequest<T extends ActionThunk>({
   const mutate = useCallback(
     (params: Parameters<T>[0], options?: MutateOptions) => {
       loaderHandler.showLoader();
-      mutation.mutate(params, {
-        onSuccess: () => {
-          if (options?.keyToInvalidate) {
-            queryClient.invalidateQueries(options.keyToInvalidate);
-          }
-        },
+
+      return new Promise<void>((resolve, reject) => {
+        mutation.mutate(params, {
+          onSuccess: async () => {
+            if (options?.keyToInvalidate) {
+              await queryClient.invalidateQueries(options.keyToInvalidate);
+              resolve();
+            }
+          },
+          onError: () => {
+            reject();
+          },
+        });
       });
     },
     [mutation, queryClient],

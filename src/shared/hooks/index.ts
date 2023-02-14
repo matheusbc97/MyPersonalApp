@@ -1,4 +1,4 @@
-import useFetchFinances from './requests/useFetchFinances';
+import useFetchFinances from './requests/finances/useFetchFinances';
 import useForm from './useForm';
 import useFetchFinancesNotes from './requests/useFetchFinancesNotes';
 import useFetchBanks from './requests/useFetchBanks';

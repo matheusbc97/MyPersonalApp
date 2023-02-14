@@ -1,4 +1,4 @@
-import {CurrencyValue, Finance, FinanceType} from '@/shared/types';
+import {Finance} from '@/shared/types';
 
 export interface CreateFinanceParams {
   paymentMethod: string;
@@ -9,13 +9,12 @@ export interface CreateFinanceParams {
 }
 
 export interface UpdateFinanceParams {
+  id: number;
   paymentMethod: string;
   day: number;
   fixedDate: boolean;
   amount: number;
-  currencyValue: CurrencyValue;
   name: string;
-  type: FinanceType;
 }
 
 export interface PayFinanceParams {

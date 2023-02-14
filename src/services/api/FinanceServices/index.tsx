@@ -20,6 +20,7 @@ import {
 import {
   createFinancesRequest,
   fetchMonthlyFinancesRequest,
+  updateFinancesRequest,
 } from '@/requests/finances/finances';
 
 export function fetchFinancesService(
@@ -41,12 +42,11 @@ export function createFinanceService(
 }
 
 export function updateFinanceService(
-  id: string,
-  updates: UpdateFinanceParams,
+  params: UpdateFinanceParams,
 ): Promise<void> {
   return apiService({
-    api: updateFinance(id, updates),
-    mock: mockRequest(mockUpdateFinance(id, updates)),
+    api: updateFinancesRequest(params),
+    mock: mockRequest(null),
   });
 }
 
