@@ -6,7 +6,7 @@ import {
   updateGymTrainingRequest,
   getGymTrainingRequest,
   deleteGymTrainingRequest,
-} from '@/requests';
+} from '@/shared/requests';
 import {GymTraining} from '@/shared/types';
 import mockRequest from '@/shared/utils/mockRequest';
 

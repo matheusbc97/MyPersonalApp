@@ -1,4 +1,4 @@
-import {updateGymExerciseItemRequest} from '@/requests/gym/exerciseItems';
+import {updateGymExerciseItemRequest} from '@/shared/requests/gym/exerciseItems';
 import {UpdateGymExerciseItemParams} from '@/shared/services/api/gym/types';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {useSendRequest} from '@/shared/hooks';

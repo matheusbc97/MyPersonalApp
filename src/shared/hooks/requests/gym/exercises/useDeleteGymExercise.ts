@@ -1,4 +1,4 @@
-import {deleteGymExerciseRequest} from '@/requests';
+import {deleteGymExerciseRequest} from '@/shared/requests';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {useSendRequest} from '@/shared/hooks';
 import {SendRequestOptions} from '@/shared/hooks/requests/useSendRequest';

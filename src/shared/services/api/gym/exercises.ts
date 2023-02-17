@@ -4,7 +4,7 @@ import {
   createGymExerciseRequest,
   updateGymExerciseRequest,
   deleteGymExerciseRequest,
-} from '@/requests';
+} from '@/shared/requests';
 import {GymExercise} from '@/shared/types';
 import mockRequest from '@/shared/utils/mockRequest';
 import apiService from '../apiService';

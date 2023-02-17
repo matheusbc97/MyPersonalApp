@@ -3,7 +3,7 @@ import {
   createWeightRequest,
   deleteWeightRequest,
   updateWeightRequest,
-} from '@/requests';
+} from '@/shared/requests';
 import {Weight} from '@/shared/types';
 import mockRequest from '@/shared/utils/mockRequest';
 import apiService from '../apiService';

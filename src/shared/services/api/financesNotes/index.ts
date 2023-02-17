@@ -15,7 +15,7 @@ import {
   createFinanceNoteRequest,
   updateFinanceNoteRequest,
   getFinancesNotesRequest,
-} from '@/requests/finances/financesNotes';
+} from '@/shared/requests/finances/financesNotes';
 import {getFinanceNotesSections} from './utils';
 
 export function createFinanceNoteService(

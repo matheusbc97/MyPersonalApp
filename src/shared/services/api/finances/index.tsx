@@ -16,7 +16,7 @@ import {
   createFinancesRequest,
   fetchMonthlyFinancesRequest,
   updateFinancesRequest,
-} from '@/requests/finances/finances';
+} from '@/shared/requests/finances/finances';
 
 export function fetchFinancesService(
   params: FetchMonthlyFinancesParams,
