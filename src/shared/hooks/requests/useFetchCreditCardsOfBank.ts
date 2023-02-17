@@ -1,4 +1,4 @@
-import {fetchCreditCardsOfBankService} from '@/services/api/BanksService';
+import {fetchCreditCardsOfBankService} from '@/shared/services/api/BanksService';
 
 import useRequest from './useRequest';
 

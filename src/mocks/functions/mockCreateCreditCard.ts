@@ -1,4 +1,4 @@
-import {CreateCreditCardParams} from '@/services/api/BanksService/types';
+import {CreateCreditCardParams} from '@/shared/services/api/BanksService/types';
 import createFakeId from '@/shared/utils/createFakeId';
 import mockRequest from '@/shared/utils/mockRequest';
 import {creditCardsMock} from '../creditCards';

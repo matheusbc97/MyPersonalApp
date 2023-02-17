@@ -1,4 +1,4 @@
-import {createGymTrainingService} from '@/services';
+import {createGymTrainingService} from '@/shared/services';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {useSendRequest} from '@/shared/hooks';
 import {SendRequestOptions} from '@/shared/hooks/requests/useSendRequest';

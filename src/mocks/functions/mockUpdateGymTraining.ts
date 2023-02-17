@@ -1,4 +1,4 @@
-import {UpdateGymTrainingParams} from '@/services/api/gym/types';
+import {UpdateGymTrainingParams} from '@/shared/services/api/gym/types';
 import mockRequest from '@/shared/utils/mockRequest';
 import {gymTrainingsMock} from '../gymTrainings';
 

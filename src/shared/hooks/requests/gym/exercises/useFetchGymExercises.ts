@@ -1,4 +1,4 @@
-import {fetchGymExercisesService} from '@/services';
+import {fetchGymExercisesService} from '@/shared/services';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {useQuery} from 'react-query';
 

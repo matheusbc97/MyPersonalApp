@@ -13,7 +13,7 @@ import useForm from '@/shared/hooks/useForm';
 import validations from '@/shared/utils/validations';
 import {View} from 'react-native';
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
-import {createCreditCardService} from '@/services/api/BanksService';
+import {createCreditCardService} from '@/shared/services/api/BanksService';
 import {ScreenProps} from '@/shared/types';
 
 interface Form {

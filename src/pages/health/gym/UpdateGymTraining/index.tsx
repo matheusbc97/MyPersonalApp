@@ -11,7 +11,7 @@ import {
 
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
 import {ScreenProps} from '@/shared/types';
-import {updateGymTrainingService} from '@/services';
+import {updateGymTrainingService} from '@/shared/services';
 
 function UpdateGymTraining({
   navigation,

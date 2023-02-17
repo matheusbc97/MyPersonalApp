@@ -1,4 +1,4 @@
-import {createFinanceService} from '@/services';
+import {createFinanceService} from '@/shared/services';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import useSendRequest, {SendRequestOptions} from '../useSendRequest';
 

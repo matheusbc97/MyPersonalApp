@@ -1,5 +1,5 @@
-import {updateFinanceService} from '@/services';
-import {UpdateFinanceParams} from '@/services/api/finances/types';
+import {updateFinanceService} from '@/shared/services';
+import {UpdateFinanceParams} from '@/shared/services/api/finances/types';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
 import {useSendRequest} from '@/shared/hooks';
 import {SendRequestOptions} from '../useSendRequest';

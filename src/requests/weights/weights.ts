@@ -1,7 +1,7 @@
 import {
   CreateWeightsParams,
   UpdateWeightParams,
-} from '@/services/api/weights/types';
+} from '@/shared/services/api/weights/types';
 import {Weight} from '@/shared/types';
 import api from '../api';
 

@@ -1,4 +1,4 @@
-import {getBanksSectionsMock} from './../../../mocks/banks';
+import {getBanksSectionsMock} from '../../../../mocks/banks';
 import {Bank} from '@/shared/types/Bank';
 import mockRequest from '@/shared/utils/mockRequest';
 

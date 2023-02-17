@@ -1,4 +1,4 @@
-import {CreateBankParams} from '@/services/api/BanksService/types';
+import {CreateBankParams} from '@/shared/services/api/BanksService/types';
 import firestore from '@react-native-firebase/firestore';
 import {Bank, SectionData} from '../types';
 

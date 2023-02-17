@@ -1,4 +1,4 @@
-import {fetchBanksService} from '@/services/api/BanksService';
+import {fetchBanksService} from '@/shared/services/api/BanksService';
 
 import useRequest from './useRequest';
 

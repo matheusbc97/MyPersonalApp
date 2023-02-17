@@ -10,7 +10,7 @@ import {
 } from '@/shared/components';
 import useForm from '@/shared/hooks/useForm';
 import validations from '@/shared/utils/validations';
-import {createBankService} from '@/services/api/BanksService';
+import {createBankService} from '@/shared/services/api/BanksService';
 import {loaderHandler} from '@/shared/components/LoadingHandler';
 import {ScreenProps} from '@/shared/types';
 

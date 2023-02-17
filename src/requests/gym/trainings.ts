@@ -1,7 +1,7 @@
 import {
   CreateGymTrainingParams,
   UpdateGymTrainingParams,
-} from '@/services/api/gym/types';
+} from '@/shared/services/api/gym/types';
 import {GymTraining} from '@/shared/types';
 import api from '../api';
 

@@ -1,4 +1,4 @@
-import {fetchFinanceNotesService} from '@/services/api/financesNotes';
+import {fetchFinanceNotesService} from '@/shared/services/api/financesNotes';
 import useRequest from './useRequest';
 
 const useFetchFinancesNotes = () => {

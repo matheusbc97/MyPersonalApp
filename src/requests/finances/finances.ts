@@ -3,7 +3,7 @@ import {
   FetchMonthlyFinancesParams,
   FetchMonthlyFinancesResponse,
   UpdateFinanceParams,
-} from '@/services/api/finances/types';
+} from '@/shared/services/api/finances/types';
 import api from '../api';
 
 export async function fetchMonthlyFinancesRequest(

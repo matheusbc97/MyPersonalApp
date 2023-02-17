@@ -1,7 +1,7 @@
 import mockRequest from '@/shared/utils/mockRequest';
 import {finances} from '@/mocks/finances';
 import createFakeId from '@/shared/utils/createFakeId';
-import {CreateFinanceParams} from '@/services/api/finances/types';
+import {CreateFinanceParams} from '@/shared/services/api/finances/types';
 
 const mockCreateFinanceNote = async (params: CreateFinanceParams) => {
   try {

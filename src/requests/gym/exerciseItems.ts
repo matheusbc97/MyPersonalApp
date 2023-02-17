@@ -1,4 +1,4 @@
-import {UpdateGymExerciseItemParams} from '@/services/api/gym/types';
+import {UpdateGymExerciseItemParams} from '@/shared/services/api/gym/types';
 import api from '../api';
 
 export async function updateGymExerciseItemRequest({

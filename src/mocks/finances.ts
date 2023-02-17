@@ -1,4 +1,4 @@
-import {getFinanceNotesSections} from '@/services/api/financesNotes/utils';
+import {getFinanceNotesSections} from '@/shared/services/api/financesNotes/utils';
 import {Finance, FinanceNote, SectionDataWithTotal} from '@/shared/types';
 //import formatDate from '@/shared/utils/formatDate';
 

@@ -1,7 +1,7 @@
 import {useQuery} from 'react-query';
 import {QUERY_KEYS} from '@/shared/constants/queryKeys';
-import {fetchFinancesService} from '@/services/api/finances';
-import {FetchMonthlyFinancesParams} from '@/services/api/finances/types';
+import {fetchFinancesService} from '@/shared/services/api/finances';
+import {FetchMonthlyFinancesParams} from '@/shared/services/api/finances/types';
 
 const useFetchFinances = (params: FetchMonthlyFinancesParams) => {
   const {data, isError, isLoading, refetch} = useQuery(

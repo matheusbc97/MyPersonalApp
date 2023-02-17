@@ -14,7 +14,7 @@ import {
 import {
   deletePaymentOfFinanceService,
   payFinanceService,
-} from '@/services/api/finances';
+} from '@/shared/services/api/finances';
 import getCurrency from '@/shared/utils/getCurrency';
 import {ScreenProps} from '@/shared/types';
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';

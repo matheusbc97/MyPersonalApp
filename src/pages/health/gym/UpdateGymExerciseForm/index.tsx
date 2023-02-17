@@ -11,7 +11,7 @@ import {GymExercisesFormListHandles} from '@/shared/components/forms/GymExercise
 
 import {loaderHandler} from '@/shared/components/LoadingHandler';
 import {ScreenProps} from '@/shared/types';
-import {updateGymExercisesService} from '@/services';
+import {updateGymExercisesService} from '@/shared/services';
 
 const UpdateGymExerciseForm = ({
   route,
