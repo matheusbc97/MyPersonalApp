@@ -1,6 +1,6 @@
 import mockRequest from '@/shared/utils/mockRequest';
 import {finances} from '@/mocks/finances';
-import {UpdateFinanceParams} from '@/services/api/FinanceServices/types';
+import {UpdateFinanceParams} from '@/services/api/finances/types';
 
 const mockUpdateFinanceNote = async (
   id: string,

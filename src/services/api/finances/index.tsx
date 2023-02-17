@@ -10,13 +10,8 @@ import {
   PayFinanceParams,
   UpdateFinanceParams,
 } from './types';
-import {mockCreateFinance, mockUpdateFinance} from '@/mocks';
-import {
-  createFinance,
-  payFinance,
-  updateFinance,
-  deletePaymentOfFinance,
-} from '@/shared/firebase/finances';
+import {mockCreateFinance} from '@/mocks';
+import {payFinance, deletePaymentOfFinance} from '@/shared/firebase/finances';
 import {
   createFinancesRequest,
   fetchMonthlyFinancesRequest,

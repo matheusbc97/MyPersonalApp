@@ -1,7 +1,7 @@
 import {
   CreateFinanceNoteParams,
   UpdateFinanceNoteParams,
-} from '@/services/api/FinanceServices/types';
+} from '@/services/api/finances/types';
 import {FinanceNote} from '@/shared/types';
 import api from '../api';
 

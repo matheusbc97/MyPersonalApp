@@ -13,7 +13,7 @@ import {
 } from '@/shared/components';
 import {StackParams} from '@/navigation';
 import {IFinanceNoteForm} from '@/shared/components/forms/FinanceNoteForm';
-import {updateFinanceNoteService} from '@/services/api/FinanceNoteServices';
+import {updateFinanceNoteService} from '@/services/api/financesNotes';
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
 import getCurrency from '@/shared/utils/getCurrency';
 

@@ -16,7 +16,7 @@ import {FinancesFilterForm} from '@/pages/finances/FinancesFilters';
 import {ScreenProps} from '@/shared/types';
 import getYearAndMonth from './utils/getYearAndMonth';
 
-import {FetchMonthlyFinancesParams} from '@/services/api/FinanceServices/types';
+import {FetchMonthlyFinancesParams} from '@/services/api/finances/types';
 import getActiveFilters from './utils/getActiveFilters';
 
 function MonthlyFinances({navigation}: ScreenProps<'Home'>) {

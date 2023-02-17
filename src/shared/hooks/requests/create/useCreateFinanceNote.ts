@@ -1,4 +1,4 @@
-import {createFinanceNoteService} from '@/services/api/FinanceNoteServices';
+import {createFinanceNoteService} from '@/services/api/financesNotes';
 import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
 import {CreateFinanceNoteParams} from '@/services/api/FinanceNoteServices/types';
 

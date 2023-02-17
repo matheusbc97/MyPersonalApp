@@ -10,7 +10,7 @@ import {SectionDataWithTotal, FinanceNote} from '@/shared/types';
 import {
   CreateFinanceNoteParams,
   UpdateFinanceNoteParams,
-} from '../FinanceServices/types';
+} from '../finances/types';
 import {
   createFinanceNoteRequest,
   updateFinanceNoteRequest,

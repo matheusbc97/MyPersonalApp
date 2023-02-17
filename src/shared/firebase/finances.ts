@@ -1,11 +1,11 @@
 import formatDate from '@/shared/utils/formatDate';
 import {Finance, FinanceHistoric, MonthlyFinance} from './../types/Finance';
-import {UpdateFinanceNoteParams} from './../../services/api/FinanceNoteServices/types';
+import {UpdateFinanceNoteParams} from '../../services/api/financesNotes/types';
 import firestore from '@react-native-firebase/firestore';
 import {
   CreateFinanceParams,
   PayFinanceParams,
-} from '@/services/api/FinanceServices/types';
+} from '@/services/api/finances/types';
 import {SectionDataItemWithTotal} from '../types';
 import addTimeToDate from '../utils/addTimeToDate';
 import subTimeToDate from '../utils/subTimeToDate';
