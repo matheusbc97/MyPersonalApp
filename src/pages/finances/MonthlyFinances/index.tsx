@@ -47,7 +47,6 @@ function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
             onPress={() =>
               navigation.navigate('UpdateFinanceForm', {
                 finance,
-                onFinanceUpdated: () => {},
               })
             }
             finance={finance}

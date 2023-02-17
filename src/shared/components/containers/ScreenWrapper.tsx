@@ -1,21 +1,18 @@
 import React, {PropsWithChildren} from 'react';
-import {
-  StatusBar,
-  SafeAreaView,
-  View,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import {StatusBar, SafeAreaView, StyleProp, ViewStyle} from 'react-native';
 
 import theme from '@/assets/theme';
+import {EnhancedViewStyleProps} from '@/shared/hooks/useEnhancedViewStyle';
+import Column from './Column';
 
-interface ScreenWrapperProps {
+interface ScreenWrapperProps extends EnhancedViewStyleProps {
   style?: StyleProp<ViewStyle>;
 }
 
 function ScreenWrapper({
   children,
   style,
+  ...rest
 }: PropsWithChildren<ScreenWrapperProps>) {
   return (
     <SafeAreaView
@@ -26,10 +23,9 @@ function ScreenWrapper({
         },
       ]}>
       <StatusBar barStyle="light-content" />
-      <View
-        style={[{flex: 1, paddingHorizontal: 10, paddingBottom: 15}, style]}>
+      <Column flex={1} ph={10} pb={15} {...rest} style={style}>
         {children}
-      </View>
+      </Column>
     </SafeAreaView>
   );
 }

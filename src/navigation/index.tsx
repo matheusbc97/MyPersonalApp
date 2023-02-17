@@ -87,7 +87,6 @@ export type StackParams = {
     onSelectGroup: (group: Group) => void;
   };
   UpdateFinanceForm: {
-    onFinanceUpdated: () => void;
     finance: MonthlyFinance;
   };
   CreateGymTraining: undefined;

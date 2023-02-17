@@ -12,14 +12,15 @@ import {
 
 import {ScreenProps} from '@/shared/types';
 import useCreateFinance from '@/shared/hooks/requests/finances/useCreateFinance';
+import {currencies} from '@/shared/constants/currencies';
 
 const formInitialState: IFinanceForm = {
   name: '',
   paymentMethod: '',
-  currency: null,
+  currency: currencies.real,
   day: null,
   group: null,
-  type: null,
+  type: 'expense',
   amount: '',
   fixedDate: true,
 };
@@ -38,8 +39,14 @@ function CreateFinanceForm({navigation}: ScreenProps<'CreateFinanceForm'>) {
   });
 
   const handleSubmitSuccess = async (form: IFinanceForm) => {
+    let amount = Number(form.amount);
+
+    if (form.type === 'expense') {
+      amount *= -1;
+    }
+
     createFinance({
-      amount: Number(form.amount),
+      amount,
       fixedDate: true,
       day: Number(form.day),
       name: form.name,
@@ -48,13 +55,13 @@ function CreateFinanceForm({navigation}: ScreenProps<'CreateFinanceForm'>) {
   };
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper pt={15}>
       <FinanceForm
         ref={financeFormRef}
         initialState={formInitialState}
         onSubmitSuccess={handleSubmitSuccess}
       />
-      <Row flexEnd style={{marginTop: 20}}>
+      <Row flexEnd mt={20}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={() => financeFormRef.current?.submit()} />
       </Row>

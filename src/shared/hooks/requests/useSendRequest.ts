@@ -35,7 +35,7 @@ function useSendRequest<T extends ActionThunk>({
   const mutation = useMutation(promise, {
     onSuccess: () => {
       keyToInvalidate && queryClient.invalidateQueries(keyToInvalidate);
-      //onSuccess?.();
+      onSuccess?.();
     },
     onError: error => {
       handleErrorMessage(error);
@@ -60,8 +60,8 @@ function useSendRequest<T extends ActionThunk>({
               resolve();
             }
           },
-          onError: () => {
-            reject();
+          onError: error => {
+            reject(error);
           },
         });
       });

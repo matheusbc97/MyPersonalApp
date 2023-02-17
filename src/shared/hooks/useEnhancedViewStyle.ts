@@ -45,7 +45,7 @@ function getJustifyContent({
   return undefined;
 }
 
-export interface EnhancedViewProps extends InsetsProps {
+export interface EnhancedViewStyleProps extends InsetsProps {
   spaceBetween?: boolean;
   alignCenter?: boolean;
   flexEnd?: boolean;
@@ -109,14 +109,14 @@ function useInsetsProps(viewStyle: ViewStyle, props: InsetsProps) {
 
 function useEnhancedViewStyle({
   spaceBetween,
-  alignCenter = true,
+  alignCenter = false,
   flexEnd,
   width,
   background,
   surface,
   flex,
   ...insetsProps
-}: EnhancedViewProps) {
+}: EnhancedViewStyleProps) {
   const viewStyle: ViewStyle = {};
 
   if (flexEnd || spaceBetween) {

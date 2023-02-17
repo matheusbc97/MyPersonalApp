@@ -11,7 +11,7 @@ const PaymentAmountText: React.FC<PaymentAmountTextProp> = ({amount}) => {
 
   return (
     <Text style={{color: isReceipt ? '#29A045' : '#C63131'}}>
-      {isReceipt ? '+' : '-'}R$ {amount}
+      {isReceipt ? '+' : '-'}R$ {Math.abs(amount)}
     </Text>
   );
 };

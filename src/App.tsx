@@ -1,5 +1,4 @@
-import React from 'react';
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import theme from '@/assets/theme';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {LoadingHandler} from '@/shared/components';
@@ -11,12 +10,12 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-     <View style={{flex: 1, backgroundColor: theme.background}}>
-      <Navigation />
-      <LoadingHandler />
-    </View>
-  </QueryClientProvider>
-   
+      <StatusBar backgroundColor={theme.primary} />
+      <View style={{flex: 1, backgroundColor: theme.background}}>
+        <Navigation />
+        <LoadingHandler />
+      </View>
+    </QueryClientProvider>
   );
 };
 

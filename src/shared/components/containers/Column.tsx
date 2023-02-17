@@ -2,10 +2,10 @@ import React, {PropsWithChildren} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 
 import useEnhancedViewStyle, {
-  EnhancedViewProps,
+  EnhancedViewStyleProps,
 } from '@/shared/hooks/useEnhancedViewStyle';
 
-export interface ColumnProps extends EnhancedViewProps {
+export interface ColumnProps extends EnhancedViewStyleProps {
   style?: StyleProp<ViewStyle>;
 }
 
