@@ -1,6 +1,7 @@
 import {CreateBankParams} from '@/shared/services/api/BanksService/types';
 import firestore from '@react-native-firebase/firestore';
-import {Bank, SectionData} from '../types';
+import {Bank} from '../types';
+import {getBanksSections} from '../utils/getBanksSections';
 
 const userId = 'U98XZMw9DLQq8oyQXBtf';
 
@@ -16,26 +17,7 @@ export async function fetchBanks() {
       } as Bank),
   );
 
-  const personalBanks = banks.filter(bank => bank.type === 'personal');
-  const pjBanks = banks.filter(bank => bank.type === 'pj');
-
-  const sections: SectionData<Bank> = [];
-
-  if (personalBanks.length > 0) {
-    sections.push({
-      title: 'Pessoal',
-      data: personalBanks,
-    });
-  }
-
-  if (pjBanks.length > 0) {
-    sections.push({
-      title: 'PJ',
-      data: pjBanks,
-    });
-  }
-
-  return sections;
+  return getBanksSections(banks);
 }
 
 export async function createBank(params: CreateBankParams) {
