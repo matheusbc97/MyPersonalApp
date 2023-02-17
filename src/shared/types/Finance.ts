@@ -29,12 +29,11 @@ export interface FinanceHistoric {
 }
 
 export interface FinanceNote {
-  type: FinanceType;
   description?: string;
   name: string;
   amount: number;
-  currency: CurrencyValue;
-  id: string;
+  //currency: CurrencyValue;
+  id: number;
 }
 
 export type FinanceDateTypeValue = 'fixo' | 'variavel';

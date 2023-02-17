@@ -21,7 +21,6 @@ const FinanceNoteListItem = ({
       <PaymentAmountText
         amount={financeNote.amount}
         currency={financeNote.currency}
-        type={financeNote.type}
       />
     </Row>
     <Text style={{marginTop: 3}}>{financeNote.description}</Text>

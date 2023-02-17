@@ -5,39 +5,44 @@ import mockUpdateFinanceNote from '@/mocks/functions/mockUpdateFinanceNote';
 
 import apiService from '../apiService';
 
-import {CreateFinanceNoteParams, UpdateFinanceNoteParams} from './types';
 import {SectionDataWithTotal, FinanceNote} from '@/shared/types';
 
 import {
-  fetchFinanceNotes,
-  createFinanceNote,
-  updateFinanceNote,
-} from '@/shared/firebase';
+  CreateFinanceNoteParams,
+  UpdateFinanceNoteParams,
+} from '../FinanceServices/types';
+import {
+  createFinanceNoteRequest,
+  updateFinanceNoteRequest,
+  getFinancesNotesRequest,
+} from '@/requests/finances/financesNotes';
+import {getFinanceNotesSections} from './utils';
 
 export function createFinanceNoteService(
   params: CreateFinanceNoteParams,
 ): Promise<null> {
   return apiService({
-    api: createFinanceNote(params),
+    api: createFinanceNoteRequest(params),
     mock: mockCreateFinanceNote(params),
   });
 }
 
 export function updateFinanceNoteService(
-  id: string,
   params: UpdateFinanceNoteParams,
 ): Promise<null> {
   return apiService({
-    api: updateFinanceNote(id, params),
-    mock: mockUpdateFinanceNote(id, params),
+    api: updateFinanceNoteRequest(params),
+    mock: mockRequest(null),
   });
 }
 
-export function fetchFinanceNotesService(): Promise<
+export async function fetchFinanceNotesService(): Promise<
   SectionDataWithTotal<FinanceNote>
 > {
-  return apiService({
-    api: fetchFinanceNotes(),
+  const response = (await apiService({
+    api: getFinancesNotesRequest(),
     mock: mockRequest(getFinancesNoteSectionsMock()),
-  });
+  })) as FinanceNote[];
+
+  return getFinanceNotesSections(response);
 }

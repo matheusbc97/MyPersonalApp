@@ -33,3 +33,16 @@ export interface FetchMonthlyFinancesParams {
   yearAndMonthStart: string;
   yearAndMonthEnd: string;
 }
+
+export interface CreateFinanceNoteParams {
+  description?: string;
+  name: string;
+  amount: number;
+}
+
+export interface UpdateFinanceNoteParams {
+  id: number;
+  description?: string;
+  name?: string;
+  amount?: number;
+}

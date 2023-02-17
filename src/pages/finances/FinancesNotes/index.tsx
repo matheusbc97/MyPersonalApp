@@ -8,21 +8,18 @@ import {
   Row,
   TitleWithTotalSectionHeader,
 } from '@/shared/components';
-import {StackParams} from '@/navigation';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {useFetchFinancesNotes} from '@/shared/hooks';
+import {ScreenProps} from '@/shared/types';
 
-interface Props {
-  navigation: StackNavigationProp<StackParams, 'Home'>;
-}
-
-function FinancesNotes({navigation}: Props) {
+function FinancesNotes({navigation}: ScreenProps<'FinancesNotes'>) {
   const {financesNotes, getFinancesNotes, hasError, isLoading} =
     useFetchFinancesNotes();
 
   useEffect(() => {
     getFinancesNotes();
   }, [getFinancesNotes]);
+
+  console.log('financesNotes', financesNotes);
 
   return (
     <ScreenWrapper>

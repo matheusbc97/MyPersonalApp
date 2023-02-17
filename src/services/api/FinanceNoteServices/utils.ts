@@ -1,12 +1,12 @@
 import {FinanceNote, SectionDataWithTotal} from '@/shared/types';
+import {getIsReceipt} from '@/shared/utils/getIsReceipt';
 
 export function getFinanceNotesSections(financeNotes: FinanceNote[]) {
-  const receipts = financeNotes.filter(
-    financeNote => financeNote.type === 'receipt',
+  const receipts = financeNotes.filter(financeNote =>
+    getIsReceipt(financeNote.amount),
   );
-
   const expenses = financeNotes.filter(
-    financeNote => financeNote.type === 'expense',
+    financeNote => !getIsReceipt(financeNote.amount),
   );
 
   const sections: SectionDataWithTotal<FinanceNote> = [];
