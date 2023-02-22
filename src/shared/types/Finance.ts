@@ -19,7 +19,7 @@ export interface Finance {
 }
 
 export interface MonthlyFinance extends Finance {
-  paymentId?: string;
+  paymentId?: number;
 }
 
 export interface FinanceHistoric {

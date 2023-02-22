@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import {useRef} from 'react';
 
 import {
   ScreenWrapper,
@@ -11,14 +11,12 @@ import {
   PaidRadioListInput,
 } from '@/shared/components';
 
-import {
-  deletePaymentOfFinanceService,
-  payFinanceService,
-} from '@/shared/services/api/finances';
 import getCurrency from '@/shared/utils/getCurrency';
 import {ScreenProps} from '@/shared/types';
-import requestWithScreenLoading from '@/shared/utils/requestWithScreenLoading';
-import useUpdateFinance from '@/shared/hooks/requests/finances/useUpdateFinance';
+
+import {useUpdateFinance} from '@/shared/hooks';
+import usePaid from './hooks/usePaid';
+import getFinanceInitialState from './utils/getFinanceInitialState';
 
 function UpdateFinanceFormPage({
   route,
@@ -27,7 +25,10 @@ function UpdateFinanceFormPage({
   const financeFormRef = useRef<FinanceFormHandles>(null);
   const finance = route.params.finance;
 
-  const [paid, setPaid] = useState(finance.paid);
+  const {makePayment, paid} = usePaid({
+    finance,
+    initialValue: !!finance.payment,
+  });
 
   const updateFinance = useUpdateFinance();
 
@@ -46,50 +47,16 @@ function UpdateFinanceFormPage({
     } catch {}
   };
 
-  const handlePayFinance = async (pay: boolean) => {
-    try {
-      if (pay) {
-        await requestWithScreenLoading(() =>
-          payFinanceService({financeId: finance.id, date: new Date()}),
-        );
-
-        setPaid(true);
-      } else {
-        const paymentId = finance.paymentId;
-        if (paymentId) {
-          await requestWithScreenLoading(() =>
-            deletePaymentOfFinanceService(paymentId),
-          );
-
-          setPaid(false);
-        }
-      }
-
-      route.params.onFinanceUpdated();
-    } catch (error) {}
-  };
-
-  const financeInitialState: IFinanceForm = {
-    amount: String(finance.amount),
-    currency: getCurrency(finance.currencyValue),
-    day: String(finance.day),
-    fixedDate: finance.fixedDate,
-    group: finance.group,
-    name: finance.name,
-    paymentMethod: finance.paymentMethod,
-    type: finance.amount > 0 ? 'receipt' : 'expense',
-  };
-
   return (
     <ScreenWrapper>
       <FinanceForm
         ref={financeFormRef}
-        initialState={financeInitialState}
+        initialState={getFinanceInitialState(finance)}
         onSubmitSuccess={handleSubmitSuccess}
       />
       <PaidRadioListInput
         style={{alignSelf: 'flex-end'}}
-        onChangeValue={handlePayFinance}
+        onChangeValue={value => makePayment(value)}
         value={paid}
       />
       <Row flexEnd style={{marginTop: 20}}>

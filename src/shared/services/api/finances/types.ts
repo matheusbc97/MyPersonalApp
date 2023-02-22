@@ -18,7 +18,7 @@ export interface UpdateFinanceParams {
 }
 
 export interface PayFinanceParams {
-  financeId: string;
+  financeId: number;
   date: Date;
 }
 

@@ -14,8 +14,10 @@ import {getCreditCardsFromBankIdMock} from '@/mocks/creditCards';
 import {bankAccountFindByIdMock} from '@/mocks/bankAccounts';
 import {CreateBankParams, CreateCreditCardParams} from './types';
 import mockCreateCreditCard from '@/mocks/functions/mockCreateCreditCard';
-import {createBank} from '@/shared/firebase/banks';
-import {getBanksRequest} from '@/shared/requests/finances/banks';
+import {
+  createBankRequest,
+  getBanksRequest,
+} from '@/shared/requests/finances/banks';
 import {getBanksSections} from '@/shared/utils/getBanksSections';
 
 export async function fetchBanksService(): Promise<SectionData<Bank>> {
@@ -25,6 +27,13 @@ export async function fetchBanksService(): Promise<SectionData<Bank>> {
   })) as Bank[];
 
   return getBanksSections(response);
+}
+
+export function createBankService(params: CreateBankParams): Promise<void> {
+  return apiService({
+    api: createBankRequest(params),
+    mock: mockRequest(null),
+  });
 }
 
 export function fetchCreditCardsOfBankService(
@@ -51,12 +60,5 @@ export function createCreditCardService(
   return apiService({
     api: fakeApiPromise(),
     mock: mockCreateCreditCard(params),
-  });
-}
-
-export function createBankService(params: CreateBankParams): Promise<void> {
-  return apiService({
-    api: createBank(params),
-    mock: mockRequest(null),
   });
 }

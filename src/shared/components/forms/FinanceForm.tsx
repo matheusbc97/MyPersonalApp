@@ -12,7 +12,7 @@ import {
   GroupInput,
   PaymentMethodInput,
 } from '@/shared/components';
-import {Currency, FinanceType, FormHandles, Group} from '@/shared/types';
+import {FinanceType, FormHandles, Group} from '@/shared/types';
 import validations from '@/shared/utils/validations';
 import useFormTemplate from '@/shared/hooks/useFormTemplate';
 import {financesDateTypes} from '@/shared/constants/financeDateTypes';
@@ -20,7 +20,7 @@ import {financesDateTypes} from '@/shared/constants/financeDateTypes';
 export interface IFinanceForm {
   name: string;
   paymentMethod: string;
-  currency: Currency | null;
+  //currency: Currency | null;
   amount: string;
   group: Group | null;
   type: FinanceType | null;

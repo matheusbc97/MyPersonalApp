@@ -57,8 +57,8 @@ function useSendRequest<T extends ActionThunk>({
           onSuccess: async () => {
             if (options?.keyToInvalidate) {
               await queryClient.invalidateQueries(options.keyToInvalidate);
-              resolve();
             }
+            resolve();
           },
           onError: error => {
             reject(error);

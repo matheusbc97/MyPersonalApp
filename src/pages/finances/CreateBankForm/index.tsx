@@ -13,6 +13,7 @@ import validations from '@/shared/utils/validations';
 import {createBankService} from '@/shared/services/api/BanksService';
 import {loaderHandler} from '@/shared/components/LoadingHandler';
 import {ScreenProps} from '@/shared/types';
+import {BankTypeEnum} from '@/shared/enums';
 
 interface Form {
   name: string;
@@ -45,7 +46,7 @@ const CreateBankForm = ({navigation, route}: ScreenProps<'CreateBankForm'>) => {
       try {
         await createBankService({
           name: form.name,
-          type: 'personal',
+          type: BankTypeEnum.PERSONAL,
         });
 
         route.params.onBankCreated();

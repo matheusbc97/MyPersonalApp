@@ -17,6 +17,10 @@ import {
   fetchMonthlyFinancesRequest,
   updateFinancesRequest,
 } from '@/shared/requests/finances/finances';
+import {
+  createPaymentRequest,
+  deletePaymentRequest,
+} from '@/shared/requests/finances/payments';
 
 export function fetchFinancesService(
   params: FetchMonthlyFinancesParams,
@@ -47,16 +51,16 @@ export function updateFinanceService(
 
 export function payFinanceService(params: PayFinanceParams): Promise<void> {
   return apiService({
-    api: payFinance(params),
+    api: createPaymentRequest(params),
     mock: mockRequest(null),
   });
 }
 
 export function deletePaymentOfFinanceService(
-  paymentId: string,
+  paymentId: number,
 ): Promise<void> {
   return apiService({
-    api: deletePaymentOfFinance(paymentId),
+    api: deletePaymentRequest(paymentId),
     mock: mockRequest(null),
   });
 }

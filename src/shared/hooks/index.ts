@@ -11,6 +11,9 @@ import useSendRequest from './requests/useSendRequest';
 import useDeleteGymExercise from './requests/gym/exercises/useDeleteGymExercise';
 import useUpdateGymExerciseItem from './requests/gym/exerciseItems/useUpdateGymExerciseItem';
 import useFetchWeights from './requests/weights/useFetchWeights';
+import useCreatePayment from './requests/finances/useCreatePayment';
+import useDeletePayment from './requests/finances/useDeletePayment';
+import useUpdateFinance from './requests/finances/useUpdateFinance';
 
 export {
   useFetchFinances,
@@ -26,4 +29,7 @@ export {
   useDeleteGymExercise,
   useUpdateGymExerciseItem,
   useFetchWeights,
+  useCreatePayment,
+  useDeletePayment,
+  useUpdateFinance,
 };
