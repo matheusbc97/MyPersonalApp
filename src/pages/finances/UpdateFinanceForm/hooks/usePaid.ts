@@ -18,9 +18,7 @@ function usePaid({finance, initialValue}: UsePaidParams) {
       if (pay) {
         await createPayment({financeId: finance.id, date: new Date()});
       } else {
-        console.log('paid', finance);
         const paymentId = finance.payment.id;
-        console.log('paymentId', paymentId);
 
         if (paymentId) {
           await deletePayment(paymentId);
