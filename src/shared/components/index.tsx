@@ -79,6 +79,7 @@ import DeleteIconButtonWithDeleteModal from './buttons/DeleteIconButtonWithDelet
 import CancelTextButtonWithGoBack from './buttons/CancelTextButtonWithGoBack';
 import WeightModal, {WeightModalHandles} from './modals/WeightModal';
 import Icon from './Icon';
+import ArrowsOptions from './ArrowsOptions';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -158,6 +159,7 @@ export {
   CancelTextButtonWithGoBack,
   WeightModal,
   Icon,
+  ArrowsOptions,
 };
 
 export type {

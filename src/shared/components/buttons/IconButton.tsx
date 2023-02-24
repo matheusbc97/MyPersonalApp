@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import FontAwesomeIcon5 from 'react-native-vector-icons/FontAwesome5';
+import Icon, {IconFontFamily} from '../Icon';
 
 import Button from './Button';
 
@@ -9,8 +8,8 @@ export interface IconButtonProps {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
-  iconName?: string;
-  fontFamily?: 'FontAwesome' | 'FontAwesome5';
+  iconName: string;
+  fontFamily?: IconFontFamily;
   disabled?: boolean;
 }
 
@@ -32,11 +31,12 @@ const IconButton = ({
         },
         style,
       ]}>
-      {fontFamily === 'FontAwesome' ? (
-        <FontAwesomeIcon color="#BDBDBD" size={size} name={iconName} />
-      ) : (
-        <FontAwesomeIcon5 color="#BDBDBD" size={size} name={iconName} />
-      )}
+      <Icon
+        color="#BDBDBD"
+        fontFamily={fontFamily}
+        size={size}
+        name={iconName}
+      />
     </Button>
   );
 };

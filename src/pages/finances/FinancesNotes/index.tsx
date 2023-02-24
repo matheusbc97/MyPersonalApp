@@ -19,8 +19,6 @@ function FinancesNotes({navigation}: ScreenProps<'FinancesNotes'>) {
     getFinancesNotes();
   }, [getFinancesNotes]);
 
-  console.log('financesNotes', financesNotes);
-
   return (
     <ScreenWrapper>
       <SectionListWithFetchIndicator

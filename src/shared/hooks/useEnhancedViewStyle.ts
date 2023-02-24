@@ -14,6 +14,8 @@ interface InsetsProps {
   mr?: number;
   mh?: number;
   ph?: number;
+  mv?: number;
+  pv?: number;
 }
 
 interface GetJustifyContentProps {
@@ -102,6 +104,14 @@ function useInsetsProps(viewStyle: ViewStyle, props: InsetsProps) {
 
   if (props.ph) {
     viewStyle.paddingHorizontal = props.ph;
+  }
+
+  if (props.mv) {
+    viewStyle.marginVertical = props.mv;
+  }
+
+  if (props.pv) {
+    viewStyle.paddingVertical = props.pv;
   }
 
   return viewStyle;

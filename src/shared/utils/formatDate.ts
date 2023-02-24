@@ -9,7 +9,8 @@ export type FormatTypes =
   | 'dateOfMonth'
   | 'date/Month'
   | 'month'
-  | 'yearAndMonth';
+  | 'yearAndMonth'
+  | 'yyyy-MM';
 
 function getDateFormat(formatType: FormatTypes) {
   switch (formatType) {
@@ -21,6 +22,8 @@ function getDateFormat(formatType: FormatTypes) {
       return 'dd MMM';
     case 'date/Month':
       return 'dd/MM';
+    case 'yyyy-MM':
+      return 'yyyy/MM';
     case 'dateOfMonthAndYear':
       return "dd 'de' MMM, yyyy";
     case 'month':

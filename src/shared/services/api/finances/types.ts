@@ -22,16 +22,8 @@ export interface PayFinanceParams {
   date: Date;
 }
 
-export interface FetchMonthlyFinancesResponse {
-  month: number;
-  year: number;
-  data: Finance[];
-  total: number;
-}
-
 export interface FetchMonthlyFinancesParams {
-  yearAndMonthStart: string;
-  yearAndMonthEnd: string;
+  yearAndMonth: string;
 }
 
 export interface CreateFinanceNoteParams {

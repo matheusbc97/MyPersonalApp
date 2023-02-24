@@ -1,10 +1,8 @@
-function getYearAndMonth(monthsToAdd: number) {
-  var previousMonthDate = new Date();
-  previousMonthDate.setMonth(previousMonthDate.getMonth() + monthsToAdd);
+function getYearAndMonth(date: Date) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
 
-  return `${previousMonthDate.getFullYear()}-${
-    previousMonthDate.getMonth() + 1
-  }`;
+  return `${year}-${month}`;
 }
 
 export default getYearAndMonth;

@@ -6,7 +6,6 @@ import apiService from '../apiService';
 import {
   CreateFinanceParams,
   FetchMonthlyFinancesParams,
-  FetchMonthlyFinancesResponse,
   PayFinanceParams,
   UpdateFinanceParams,
 } from './types';
@@ -20,10 +19,11 @@ import {
   createPaymentRequest,
   deletePaymentRequest,
 } from '@/shared/requests/finances/payments';
+import {Finance} from '@/shared/types';
 
 export function fetchFinancesService(
   params: FetchMonthlyFinancesParams,
-): Promise<FetchMonthlyFinancesResponse[]> {
+): Promise<Finance[]> {
   return apiService({
     api: fetchMonthlyFinancesRequest(params),
     mock: mockRequest(getFinancesSectionMock()),

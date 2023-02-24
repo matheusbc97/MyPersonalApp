@@ -1,24 +1,19 @@
 import {
   CreateFinanceParams,
   FetchMonthlyFinancesParams,
-  FetchMonthlyFinancesResponse,
   UpdateFinanceParams,
 } from '@/shared/services/api/finances/types';
+import {Finance} from '@/shared/types';
 import api from '../api';
 
 export async function fetchMonthlyFinancesRequest(
   params: FetchMonthlyFinancesParams,
-): Promise<FetchMonthlyFinancesResponse[]> {
+): Promise<Finance[]> {
   const response = await api.get('/finances-month', {
     params,
   });
 
-  return response.data.map((finance: any) => ({
-    month: finance.month,
-    year: finance.year,
-    data: finance.finances,
-    total: finance.total,
-  }));
+  return response.data;
 }
 
 export async function createFinancesRequest(

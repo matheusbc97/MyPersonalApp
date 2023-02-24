@@ -18,28 +18,20 @@ function Home({navigation}: Props) {
         <Row>
           <MenuGridItem
             iconName="piggy-bank"
-            title={'Finanças'}
+            title="Finanças"
             onPress={() => navigation.navigate('FinancesHome')}
           />
           <MenuGridItem iconName="rocket" title={'Metas'} onPress={() => {}} />
           <MenuGridItem
-            iconName="map-marked-alt"
-            title={'Viagens'}
-            onPress={() => navigation.navigate('TravelsHome')}
-          />
-        </Row>
-        <Row>
-          <MenuGridItem
             iconName="heartbeat"
-            title={'Saúde'}
+            title="Saúde"
             onPress={() => navigation.navigate('HealthHome')}
           />
-          <MenuGridItem iconName="tasks" title={'Tarefas'} onPress={() => {}} />
-          <MenuGridItem
-            iconName="clipboard-list"
-            title={'Anotações'}
-            onPress={() => {}}
-          />
+          {/*<MenuGridItem
+            iconName="map-marked-alt"
+            title="Viagens"
+            onPress={() => navigation.navigate('TravelsHome')}
+          />*/}
         </Row>
       </View>
     </ScreenWrapper>
