@@ -23,7 +23,7 @@ function ScreenWrapper({
         },
       ]}>
       <StatusBar barStyle="light-content" />
-      <Column flex={1} ph={10} pb={15} {...rest} style={style}>
+      <Column flex={1} ph={15} pb={15} {...rest} style={style}>
         {children}
       </Column>
     </SafeAreaView>

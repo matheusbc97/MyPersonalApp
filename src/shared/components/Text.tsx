@@ -6,8 +6,11 @@ import {
 } from 'react-native';
 
 import theme from '@/assets/theme';
+import useEnhancedViewStyle, {
+  EnhancedViewStyleProps,
+} from '../hooks/useEnhancedViewStyle';
 
-interface TextProps extends RNTextProps {
+interface TextProps extends RNTextProps, EnhancedViewStyleProps {
   type?:
     | 'default'
     | 'title'
@@ -25,6 +28,8 @@ const Text: React.FC<TextProps> = ({
   textAlign,
   ...rest
 }) => {
+  const enhancedViewStyle = useEnhancedViewStyle(rest);
+
   const getStyle: any = useCallback(() => {
     let textStyle: TextStyle = {};
 
@@ -73,7 +78,14 @@ const Text: React.FC<TextProps> = ({
   }, [type]);
 
   return (
-    <RNText style={[getStyle(), textAlign ? {textAlign} : {}, style]} {...rest}>
+    <RNText
+      style={[
+        enhancedViewStyle,
+        getStyle(),
+        textAlign ? {textAlign} : {},
+        style,
+      ]}
+      {...rest}>
       {children}
     </RNText>
   );

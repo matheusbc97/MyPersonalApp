@@ -14,6 +14,9 @@ import useFetchWeights from './requests/weights/useFetchWeights';
 import useCreatePayment from './requests/finances/useCreatePayment';
 import useDeletePayment from './requests/finances/useDeletePayment';
 import useUpdateFinance from './requests/finances/useUpdateFinance';
+import useFetchGoals from './requests/goals/goals/useFetchGoals';
+import useCreateGoal from './requests/goals/goals/useCreateGoal';
+import useDeleteGoal from './requests/goals/goals/useDeleteGoal';
 
 export {
   useFetchFinances,
@@ -32,4 +35,7 @@ export {
   useCreatePayment,
   useDeletePayment,
   useUpdateFinance,
+  useFetchGoals,
+  useCreateGoal,
+  useDeleteGoal,
 };

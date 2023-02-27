@@ -75,11 +75,13 @@ import CountryInput from './inputs/CountryInput';
 import CityListItem from './lists-items/CityListItem';
 import InfoWithLabel from './InfoWithLabel';
 import DeleteModal, {DeleteModalHandles} from './modals/DeleteModal';
-import DeleteIconButtonWithDeleteModal from './buttons/DeleteIconButtonWithDeleteModal';
+import DeleteIconButtonWithModal from './buttons/DeleteIconButtonWithModal';
 import CancelTextButtonWithGoBack from './buttons/CancelTextButtonWithGoBack';
 import WeightModal, {WeightModalHandles} from './modals/WeightModal';
 import Icon from './Icon';
 import ArrowsOptions from './ArrowsOptions';
+import GoalListItem from './lists-items/GoalListItem';
+import GoalForm, {GoalFormHandles, IGoalForm} from './forms/GoalForm';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -155,11 +157,13 @@ export {
   CityListItem,
   InfoWithLabel,
   DeleteModal,
-  DeleteIconButtonWithDeleteModal,
+  DeleteIconButtonWithModal,
   CancelTextButtonWithGoBack,
   WeightModal,
   Icon,
   ArrowsOptions,
+  GoalListItem,
+  GoalForm,
 };
 
 export type {
@@ -173,4 +177,6 @@ export type {
   ModalHandles,
   DeleteModalHandles,
   WeightModalHandles,
+  IGoalForm,
+  GoalFormHandles,
 };

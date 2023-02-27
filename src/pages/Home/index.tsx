@@ -21,7 +21,11 @@ function Home({navigation}: Props) {
             title="Finanças"
             onPress={() => navigation.navigate('FinancesHome')}
           />
-          <MenuGridItem iconName="rocket" title={'Metas'} onPress={() => {}} />
+          <MenuGridItem
+            iconName="rocket"
+            title={'Metas'}
+            onPress={() => navigation.navigate('GoalsHome')}
+          />
           <MenuGridItem
             iconName="heartbeat"
             title="Saúde"

@@ -1,17 +1,13 @@
-import React from 'react';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Country} from '@/shared/types/Country';
+import {StackParams} from './types';
+import theme from '@/assets/theme';
 
 import Home from '@/pages/Home';
 import FinancesHome from '@/pages/finances/FinancesHome';
-import theme from '@/assets/theme';
 import MonthlyFinances from '@/pages/finances/MonthlyFinances';
-import FinancesFilters, {
-  FinancesFiltersPageParams,
-} from '@/pages/finances/FinancesFilters';
+import FinancesFilters from '@/pages/finances/FinancesFilters';
 import FinancesGroups from '@/pages/finances/FinancesGroups';
 import CreateFinanceForm from '@/pages/finances/CreateFinanceForm';
 import FinancesNotes from '@/pages/finances/FinancesNotes';
@@ -20,7 +16,7 @@ import NewBankForm from '@/pages/finances/NewBankForm';
 import UpdateBankForm from '@/pages/finances/UpdateBankForm';
 import UpdateFinanceForm from '@/pages/finances/UpdateFinanceForm';
 import Banks from '@/pages/finances/Banks';
-import BankDetails, {BankDetailsPageParams} from '@/pages/finances/BankDetails';
+import BankDetails from '@/pages/finances/BankDetails';
 import CreateBankForm from '@/pages/finances/CreateBankForm';
 import CreateBankAccountForm from '@/pages/finances/CreateBankAccountForm';
 import CreateCreditCardForm from '@/pages/finances/CreateCreditCardForm';
@@ -31,82 +27,19 @@ import CreateGymExerciseForm from '@/pages/health/gym/CreateGymExerciseForm';
 import UpdateFinanceNoteForm from '@/pages/finances/UpdateFinanceNoteForm';
 import CreateGymTraining from '@/pages/health/gym/CreateGymTraining';
 import SelectCountry from '@/pages/travels/SelectCountry';
-
-import {
-  Bank,
-  FinanceNote,
-  Group,
-  GymExercise,
-  GymTraining,
-} from '@/shared/types';
 import UpdateGymTraining from '@/pages/health/gym/UpdateGymTraining';
 import UpdateGymExerciseForm from '@/pages/health/gym/UpdateGymExerciseForm';
-import {MonthlyFinance} from '@/shared/types/Finance';
 import TravelsHome from '@/pages/travels/TravelsHome';
 import CityDetails from '@/pages/travels/CityDetails';
 import CreateNewCityLink from '@/pages/travels/CreateNewCityLink';
 import Cities from '@/pages/travels/Cities';
 import GymExerciseDetails from '@/pages/health/gym/GymExerciseDetails';
 import WeightListPage from '@/pages/health/weights/WeightListPage';
-
-export type StackParams = {
-  Home: undefined;
-  FinancesHome: undefined;
-  TravelsHome: undefined;
-  MonthlyFinances: undefined;
-  FinancesFilters: FinancesFiltersPageParams;
-  CreateFinanceForm: undefined;
-  FinancesNotes: undefined;
-  CreateFinanceNoteForm: {
-    onFinanceNoteCreated: () => void;
-  };
-  NewBankForm: undefined;
-  UpdateBankForm: undefined;
-  UpdateFinanceNoteForm: {
-    onFinanceNoteUpdated: () => void;
-    financeNote: FinanceNote;
-  };
-  BankDetails: BankDetailsPageParams;
-  Banks: undefined;
-  CreateBankForm: {
-    onBankCreated: () => void;
-  };
-  CreateBankAccountForm: undefined;
-  CreateCreditCardForm: {
-    bank: Bank;
-  };
-  HealthHome: undefined;
-  GymDetails: undefined;
-  GymTrainingDetails: {
-    gymTraining: GymTraining;
-  };
-  CreateGymExerciseForm: {
-    gymTrainingId: number;
-  };
-  FinancesGroups: {
-    onSelectGroup: (group: Group) => void;
-  };
-  UpdateFinanceForm: {
-    finance: MonthlyFinance;
-  };
-  CreateGymTraining: undefined;
-  UpdateGymTraining: {
-    gymTraining: GymTraining;
-  };
-  UpdateGymExerciseForm: {
-    gymExercise: GymExercise;
-  };
-  CityDetails: undefined;
-  Cities: undefined;
-  CreateNewCityLink: undefined;
-  SelectCountry: {
-    onSelectCountry: (country: Country) => void;
-  };
-  GymExerciseDetails: {
-    gymExercise: GymExercise;
-  };
-  WeightList: undefined;
-};
+import GoalsHomePage from '@/pages/goals/GoalsHomePage';
+import CreateGoalFormPage from '@/pages/goals/CreateGoalPage';
+import GoalDetailsPage from '@/pages/goals/GoalDetailsPage';
+import UpdateGoalPage from '@/pages/goals/UpdateGoalPage';
+import CreateQuestPage from '@/pages/goals/CreateQuestPage';
 
 const Stack = createNativeStackNavigator<StackParams>();
 
@@ -344,6 +277,41 @@ function MyStack() {
             headerTitle: 'Pesos',
           }}
           component={WeightListPage}
+        />
+        <Stack.Screen
+          name="GoalsHome"
+          options={{
+            headerTitle: 'Metas',
+          }}
+          component={GoalsHomePage}
+        />
+        <Stack.Screen
+          name="CreateGoalForm"
+          options={{
+            headerTitle: 'Criar Meta',
+          }}
+          component={CreateGoalFormPage}
+        />
+        <Stack.Screen
+          name="GoalDetails"
+          options={{
+            headerTitle: 'Meta',
+          }}
+          component={GoalDetailsPage}
+        />
+        <Stack.Screen
+          name="UpdateGoal"
+          options={{
+            headerTitle: 'Meta',
+          }}
+          component={UpdateGoalPage}
+        />
+        <Stack.Screen
+          name="CreateQuest"
+          options={{
+            headerTitle: 'Criar Missão',
+          }}
+          component={CreateQuestPage}
         />
       </Stack.Navigator>
     </NavigationContainer>

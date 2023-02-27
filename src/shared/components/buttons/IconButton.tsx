@@ -8,7 +8,7 @@ export interface IconButtonProps {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
-  iconName: string;
+  iconName?: string;
   fontFamily?: IconFontFamily;
   disabled?: boolean;
 }
@@ -16,7 +16,7 @@ export interface IconButtonProps {
 const IconButton = ({
   onPress,
   style,
-  iconName,
+  iconName = '',
   size = 30,
   fontFamily = 'FontAwesome',
   disabled,

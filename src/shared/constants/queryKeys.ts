@@ -3,4 +3,5 @@ export const QUERY_KEYS = {
   GYM_EXERCISES: 'gymExercises',
   WEIGHTS: 'weights',
   FINANCES: 'finances',
+  GOALS: 'goals',
 };

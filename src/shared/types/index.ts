@@ -29,6 +29,9 @@ import {CustomApiErrorCode} from './CustomApiErrorCode';
 import {FormHandles} from './FormHandles';
 import {ScreenProps} from './ScreenProps';
 import {Weight} from './Weight';
+import {PartialBy} from './PartialBy';
+export * from './Goal';
+export * from './PartialBy';
 
 export type {
   Finance,

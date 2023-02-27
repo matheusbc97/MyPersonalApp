@@ -1,4 +1,4 @@
-import {StackParams} from '@/navigation';
+import {StackParams} from '@/navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 

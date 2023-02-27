@@ -1,7 +1,6 @@
 import mockRequest from '@/shared/utils/mockRequest';
 import {getFinancesNoteSectionsMock} from '@/mocks/finances';
 import mockCreateFinanceNote from '@/mocks/functions/mockCreateFinanceNote';
-import mockUpdateFinanceNote from '@/mocks/functions/mockUpdateFinanceNote';
 
 import apiService from '../apiService';
 

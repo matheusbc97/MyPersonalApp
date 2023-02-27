@@ -14,7 +14,7 @@ interface FormHandles<T> {
 interface UseFormTemplateParams<F, H extends FormHandles<F>> {
   initialState: F;
   validationScheme: any;
-  onSubmitSuccess: (form: F) => void;
+  onSubmitSuccess?: (form: F) => void;
   ref: ForwardedRef<H>;
 }
 
@@ -40,7 +40,7 @@ const useFormTemplate = <F, H extends FormHandles<F>>({
         const {form, isValid} = submitForm();
 
         if (isValid) {
-          onSubmitSuccess(form);
+          onSubmitSuccess?.(form);
         }
 
         return {form, isValid};

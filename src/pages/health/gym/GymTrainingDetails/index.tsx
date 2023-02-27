@@ -8,7 +8,7 @@ import {
   MapList,
   Row,
   EditIconButton,
-  DeleteIconButtonWithDeleteModal,
+  DeleteIconButtonWithModal,
   WeightModal,
 } from '@/shared/components';
 import TitleWithSeparator from '@/shared/components/section-headers/TitleWithSeparatorSectionHeader';
@@ -83,7 +83,7 @@ const GymTrainingDetails = ({
       </ScrollView>
 
       <Row mh={5}>
-        <DeleteIconButtonWithDeleteModal
+        <DeleteIconButtonWithModal
           deleteText={gymTraining.name}
           onConfirmPress={() => deleteGym(gymTraining.id)}
         />

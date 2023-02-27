@@ -5,14 +5,14 @@ import React, {useRef} from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
 import IconButton from './IconButton';
 
-interface DeleteIconButtonWithDeleteModalProps {
+interface DeleteIconButtonWithModalProps {
   deleteText: string;
   onConfirmPress: () => void;
   style?: StyleProp<ViewStyle>;
   size?: number;
 }
 
-const DeleteIconButtonWithDeleteModal: React.FC<DeleteIconButtonWithDeleteModalProps> =
+const DeleteIconButtonWithModal: React.FC<DeleteIconButtonWithModalProps> =
   ({onConfirmPress, deleteText, size, style}) => {
     const deleteModalRef = useRef<DeleteModalHandles>(null);
 
@@ -29,4 +29,4 @@ const DeleteIconButtonWithDeleteModal: React.FC<DeleteIconButtonWithDeleteModalP
     );
   };
 
-export default DeleteIconButtonWithDeleteModal;
+export default DeleteIconButtonWithModal;
