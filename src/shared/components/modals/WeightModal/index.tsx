@@ -80,7 +80,7 @@ function WeightModal(
           ))}
           <Text type="title-extra-big">g</Text>
         </Row>
-        <Row width="100%" flexEnd mt={10}>
+        <Row width="100%" justifyEnd mt={10}>
           <CancelTextButton onPress={handleClose} />
           <SaveContainedButton
             onPress={() => onSavePress(Number(values.join('')))}

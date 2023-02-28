@@ -64,7 +64,7 @@ const FinancesFilters = ({route, navigation}: Props) => {
           <View style={{flex: 1}} />
         </Row>
       </View>
-      <Row flexEnd>
+      <Row justifyEnd>
         <PaidRadioListInput
           value={values.paid}
           onChangeValue={value => handleValueChange('paid', value)}

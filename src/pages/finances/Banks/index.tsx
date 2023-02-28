@@ -45,7 +45,7 @@ function Banks({navigation}: Props) {
           </Card>
         )}
       />
-      <Row flexEnd>
+      <Row justifyEnd>
         <CreateFab
           onPress={() =>
             navigation.navigate('CreateBankForm', {onBankCreated: getBanks})

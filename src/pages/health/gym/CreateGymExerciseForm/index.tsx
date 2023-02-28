@@ -41,7 +41,7 @@ const CreateGymExerciseForm = ({
     <ScreenWrapper>
       <GymExercisesFormList ref={formRef} style={{flex: 1}} />
 
-      <Row flexEnd style={{marginTop: 20}}>
+      <Row justifyEnd style={{marginTop: 20}}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={submitForm} />
       </Row>

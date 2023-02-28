@@ -82,6 +82,8 @@ import Icon from './Icon';
 import ArrowsOptions from './ArrowsOptions';
 import GoalListItem from './lists-items/GoalListItem';
 import GoalForm, {GoalFormHandles, IGoalForm} from './forms/GoalForm';
+import FabGroup from './buttons/FabGroup';
+import DimBackground from './DimBackground';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -164,6 +166,8 @@ export {
   ArrowsOptions,
   GoalListItem,
   GoalForm,
+  FabGroup,
+  DimBackground,
 };
 
 export type {

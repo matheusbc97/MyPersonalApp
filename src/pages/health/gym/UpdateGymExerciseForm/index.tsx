@@ -55,7 +55,7 @@ const UpdateGymExerciseForm = ({
         }))}
       />
 
-      <Row flexEnd style={{marginTop: 20}}>
+      <Row justifyEnd style={{marginTop: 20}}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={submitForm} />
       </Row>

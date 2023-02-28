@@ -73,7 +73,7 @@ function MonthlyFinances({navigation}: ScreenProps<'Home'>) {
         renderItem={renderItem}
       />
 
-      <Row flexEnd>
+      <Row justifyEnd>
         <ArrowsOptions
           onLeftArrowPress={() =>
             setCurrentMonth(oldState => addMonthsToDate(oldState, -1))

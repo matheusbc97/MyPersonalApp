@@ -60,7 +60,7 @@ const UpdateFinanceNoteForm = ({navigation, route}: Props) => {
         style={{flex: 1, marginVertical: 10}}
       />
 
-      <Row flexEnd style={{marginTop: 20}}>
+      <Row justifyEnd style={{marginTop: 20}}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton
           style={{marginLeft: 5}}

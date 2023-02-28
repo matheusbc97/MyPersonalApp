@@ -20,7 +20,7 @@ interface InsetsProps {
 
 interface GetJustifyContentProps {
   spaceBetween?: boolean;
-  flexEnd?: boolean;
+  justifyEnd?: boolean;
 }
 
 type GetJustifyContentReturn =
@@ -34,9 +34,9 @@ type GetJustifyContentReturn =
 
 function getJustifyContent({
   spaceBetween,
-  flexEnd,
+  justifyEnd,
 }: GetJustifyContentProps): GetJustifyContentReturn {
-  if (flexEnd) {
+  if (justifyEnd) {
     return 'flex-end';
   }
 
@@ -50,11 +50,12 @@ function getJustifyContent({
 export interface EnhancedViewStyleProps extends InsetsProps {
   spaceBetween?: boolean;
   alignCenter?: boolean;
-  flexEnd?: boolean;
+  justifyEnd?: boolean;
   width?: number | string;
   background?: boolean;
   surface?: boolean;
   flex?: number;
+  alignEnd?: boolean;
 }
 
 function useInsetsProps(viewStyle: ViewStyle, props: InsetsProps) {
@@ -120,21 +121,29 @@ function useInsetsProps(viewStyle: ViewStyle, props: InsetsProps) {
 function useEnhancedViewStyle({
   spaceBetween,
   alignCenter = false,
-  flexEnd,
+  justifyEnd,
   width,
   background,
   surface,
   flex,
+  alignEnd,
   ...insetsProps
 }: EnhancedViewStyleProps) {
   const viewStyle: ViewStyle = {};
 
-  if (flexEnd || spaceBetween) {
-    viewStyle.justifyContent = getJustifyContent({flexEnd, spaceBetween});
+  if (justifyEnd || spaceBetween) {
+    viewStyle.justifyContent = getJustifyContent({
+      justifyEnd,
+      spaceBetween,
+    });
   }
 
   if (alignCenter) {
     viewStyle.alignItems = 'center';
+  }
+
+  if (alignEnd) {
+    viewStyle.alignItems = 'flex-end';
   }
 
   if (width) {

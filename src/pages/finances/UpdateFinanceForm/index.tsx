@@ -59,7 +59,7 @@ function UpdateFinanceFormPage({
         onChangeValue={value => makePayment(value)}
         value={paid}
       />
-      <Row flexEnd style={{marginTop: 20}}>
+      <Row justifyEnd style={{marginTop: 20}}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={() => financeFormRef.current?.submit()} />
       </Row>

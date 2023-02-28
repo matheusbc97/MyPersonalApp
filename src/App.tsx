@@ -4,17 +4,19 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 import {LoadingHandler} from '@/shared/components';
 
 import Navigation from './navigation/index';
+import {DimBackgroundProvider} from './shared/contexts/DimBackgroundContext';
+import {FabGroupProvider} from './shared/contexts/FabGroupContext';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <StatusBar backgroundColor={theme.primary} />
-      <View style={{flex: 1, backgroundColor: theme.background}}>
+      <FabGroupProvider>
+        <StatusBar backgroundColor={theme.primary} />
         <Navigation />
         <LoadingHandler />
-      </View>
+      </FabGroupProvider>
     </QueryClientProvider>
   );
 };

@@ -29,7 +29,7 @@ function CreateGymTraining({navigation}: ScreenProps<'CreateGymTraining'>) {
         initialState={{name: ''}}
         onSubmitSuccess={handleGymTrainingSubmitSuccess}
       />
-      <Row flexEnd>
+      <Row justifyEnd>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={() => formRef.current?.submit()} />
       </Row>

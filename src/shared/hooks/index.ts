@@ -17,6 +17,7 @@ import useUpdateFinance from './requests/finances/useUpdateFinance';
 import useFetchGoals from './requests/goals/goals/useFetchGoals';
 import useCreateGoal from './requests/goals/goals/useCreateGoal';
 import useDeleteGoal from './requests/goals/goals/useDeleteGoal';
+import useDimBackground from './useDimBackground';
 
 export {
   useFetchFinances,
@@ -38,4 +39,5 @@ export {
   useFetchGoals,
   useCreateGoal,
   useDeleteGoal,
+  useDimBackground,
 };

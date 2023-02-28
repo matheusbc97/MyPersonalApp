@@ -44,7 +44,7 @@ function FinancesNotes({navigation}: ScreenProps<'FinancesNotes'>) {
           <TitleWithTotalSectionHeader title={title} total={total} />
         )}
       />
-      <Row flexEnd>
+      <Row justifyEnd>
         <CreateFab
           onPress={() =>
             navigation.navigate('CreateFinanceNoteForm', {

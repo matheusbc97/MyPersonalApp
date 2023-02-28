@@ -4,14 +4,17 @@ import {
   CreateFab,
   DeleteIconButtonWithModal,
   EditIconButton,
+  FabGroup,
   Icon,
   Row,
   ScreenWrapper,
   Text,
 } from '@/shared/components';
+import {FabAction} from '@/shared/components/buttons/FabGroup';
 import {CardProps} from '@/shared/components/containers/Card';
 import Column from '@/shared/components/containers/Column';
 import {useDeleteGoal} from '@/shared/hooks';
+import useFabGroup from '@/shared/hooks/useFabGroup';
 import {ScreenProps} from '@/shared/types';
 import {View} from 'react-native';
 
@@ -80,8 +83,16 @@ const quests = [
   },
 ];
 
+const fabActions: FabAction[] = [
+  {iconName: 'rocket', label: 'Editar', onPress: () => {}},
+  {iconName: 'star', label: 'Criar', onPress: () => {}},
+  {iconName: 'certificate', label: 'Alterar Descrição', onPress: () => {}},
+];
+
 function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
   const {goal} = route.params;
+
+  useFabGroup(fabActions);
 
   const deleteGoal = useDeleteGoal();
 
@@ -136,12 +147,14 @@ function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
             onConfirmPress={handleDeleteGoal}
           />
           <EditIconButton
+            style={{zIndex: 10000}}
             onPress={() => navigation.navigate('UpdateGoal', {goal})}
           />
         </Row>
 
-        <CreateFab onPress={() => navigation.navigate('CreateQuest', {goal})} />
+        {/*<CreateFab onPress={() => navigation.navigate('CreateQuest', {goal})} />*/}
       </Row>
+      {/*<FabGroup />*/}
     </ScreenWrapper>
   );
 }

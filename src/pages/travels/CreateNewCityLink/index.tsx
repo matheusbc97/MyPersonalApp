@@ -49,7 +49,7 @@ export default function CreateNewCityLinkPage() {
         </Row>
         <DescriptionTextInput formProps={handleFormInputProps('description')} />
       </View>
-      <Row flexEnd>
+      <Row justifyEnd>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton />
       </Row>

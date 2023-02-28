@@ -61,7 +61,7 @@ function CreateFinanceForm({navigation}: ScreenProps<'CreateFinanceForm'>) {
         initialState={formInitialState}
         onSubmitSuccess={handleSubmitSuccess}
       />
-      <Row flexEnd mt={20}>
+      <Row justifyEnd mt={20}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={() => financeFormRef.current?.submit()} />
       </Row>

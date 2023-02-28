@@ -66,7 +66,7 @@ const CreateBankForm = ({navigation, route}: ScreenProps<'CreateBankForm'>) => {
         />
       </View>
 
-      <Row flexEnd style={{marginTop: 20}}>
+      <Row justifyEnd style={{marginTop: 20}}>
         <CancelTextButtonWithGoBack />
         <SaveContainedButton onPress={handleSavePress} />
       </Row>

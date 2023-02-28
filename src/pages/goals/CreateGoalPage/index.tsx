@@ -33,7 +33,7 @@ function CreateGoalFormPage({navigation}: ScreenProps<'CreateGoalForm'>) {
   return (
     <ScreenWrapper>
       <GoalForm ref={goalFormRef} initialState={{name: ''}} />
-      <Row flexEnd>
+      <Row justifyEnd>
         <SaveContainedButton onPress={submitForm} />
       </Row>
     </ScreenWrapper>

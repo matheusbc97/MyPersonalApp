@@ -53,7 +53,7 @@ function DeleteModal(
         <Text>
           Tem certeza que deseja deletar: <Text type="title">{modalText}</Text>?
         </Text>
-        <Row mt={20} width="100%" flexEnd>
+        <Row mt={20} width="100%" justifyEnd>
           <CancelTextButton onPress={handleClose} />
           <ContainedButton text="Confimar" onPress={onConfirmPress} />
         </Row>
