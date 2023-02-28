@@ -1,11 +1,8 @@
 import theme from '@/assets/theme';
 import {
   Card,
-  CreateFab,
   DeleteIconButtonWithModal,
   EditIconButton,
-  FabGroup,
-  Icon,
   Row,
   ScreenWrapper,
   Text,
@@ -147,7 +144,6 @@ function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
             onConfirmPress={handleDeleteGoal}
           />
           <EditIconButton
-            style={{zIndex: 10000}}
             onPress={() => navigation.navigate('UpdateGoal', {goal})}
           />
         </Row>

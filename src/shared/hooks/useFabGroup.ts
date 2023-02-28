@@ -4,7 +4,7 @@ import {FabAction} from '../components/buttons/FabGroup';
 import {FabGroupContext} from '../contexts/FabGroupContext';
 
 function useFabGroup(fabActions: FabAction[]) {
-  const {setFabActions} = useContext(FabGroupContext);
+  const {setFabActions, onRemove} = useContext(FabGroupContext);
   const navigation = useNavigation();
 
   useFocusEffect(
@@ -17,8 +17,10 @@ function useFabGroup(fabActions: FabAction[]) {
 
   useEffect(() => {
     navigation.addListener('beforeRemove', e => {
-      setFabActions([]);
+      onRemove();
+      // setFabActions([]);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigation, setFabActions]);
 }
 

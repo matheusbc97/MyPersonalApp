@@ -1,4 +1,11 @@
-import {useCallback, useContext, useRef} from 'react';
+import {
+  ForwardedRef,
+  forwardRef,
+  useCallback,
+  useContext,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
 
 import theme from '@/assets/theme';
@@ -18,10 +25,15 @@ interface FabGroupProps {
   fabActions: FabAction[];
 }
 
-function FabGroup({fabActions}: FabGroupProps) {
-  const animationRef = useRef(new Animated.Value(0));
+export interface FabGroupHandles {
+  remove: () => void;
+}
 
-  const {setIsDimmed, isDimmed} = useContext(FabGroupContext);
+function FabGroup(
+  {fabActions}: FabGroupProps,
+  ref: ForwardedRef<FabGroupHandles>,
+) {
+  const animationRef = useRef(new Animated.Value(0));
 
   const animatedBottom = animationRef.current.interpolate({
     inputRange: [1, 2],
@@ -37,6 +49,16 @@ function FabGroup({fabActions}: FabGroupProps) {
     inputRange: [1, 2],
     outputRange: [0, 0.5],
   });
+
+  const mainFabAnimation = useRef(new Animated.Value(1));
+
+  useImperativeHandle(ref, () => ({
+    remove: () => {
+      //mainFabAnimation.current.setValue(0);
+    },
+  }));
+
+  const {setIsDimmed, isDimmed} = useContext(FabGroupContext);
 
   const changeDimmedState = useCallback(() => {
     const newIsDimmedState = !isDimmed;
@@ -66,15 +88,16 @@ function FabGroup({fabActions}: FabGroupProps) {
 
   return (
     <>
-      {true && (
+      {isDimmed && (
         <Animated.View
           style={[
             StyleSheet.absoluteFill,
-            {backgroundColor: '#000', opacity: backgroundOpacity, zIndex: 500},
+            {backgroundColor: '#000', opacity: backgroundOpacity},
           ]}
         />
       )}
-      <View style={styles.container}>
+      <Animated.View
+        style={[styles.container, {opacity: mainFabAnimation.current}]}>
         {isDimmed &&
           fabActions.map(fabAction => (
             <Animated.View
@@ -106,12 +129,12 @@ function FabGroup({fabActions}: FabGroupProps) {
           ))}
 
         <CreateFab onPress={changeDimmedState} />
-      </View>
+      </Animated.View>
     </>
   );
 }
 
-export default FabGroup;
+export default forwardRef(FabGroup);
 
 const styles = StyleSheet.create({
   container: {
