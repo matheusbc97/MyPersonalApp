@@ -1,6 +1,7 @@
 import theme from '@/assets/theme';
 import {
   Card,
+  CreateFab,
   DeleteIconButtonWithModal,
   EditIconButton,
   Row,
@@ -89,7 +90,7 @@ const fabActions: FabAction[] = [
 function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
   const {goal} = route.params;
 
-  useFabGroup(fabActions);
+  const setFabActions = useFabGroup();
 
   const deleteGoal = useDeleteGoal();
 
@@ -148,7 +149,7 @@ function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
           />
         </Row>
 
-        {/*<CreateFab onPress={() => navigation.navigate('CreateQuest', {goal})} />*/}
+        <CreateFab onPress={() => setFabActions(fabActions)} />
       </Row>
       {/*<FabGroup />*/}
     </ScreenWrapper>

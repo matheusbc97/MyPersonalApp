@@ -1,19 +1,12 @@
-import {
-  ForwardedRef,
-  forwardRef,
-  useCallback,
-  useContext,
-  useImperativeHandle,
-  useRef,
-} from 'react';
-import {Animated, StyleSheet, View} from 'react-native';
+import {useCallback, useLayoutEffect, useRef} from 'react';
+import {Animated, StyleSheet} from 'react-native';
 
 import theme from '@/assets/theme';
-import {FabGroupContext} from '@/shared/contexts/FabGroupContext';
 import {shadow} from '@/shared/styles';
 
 import Fab from '../Fab';
 import CreateFab from '../filled/fabs/CreateFab';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export interface FabAction {
   iconName: string;
@@ -23,16 +16,11 @@ export interface FabAction {
 
 interface FabGroupProps {
   fabActions: FabAction[];
+  setFabActions: (fabActions: FabAction[]) => void;
 }
 
-export interface FabGroupHandles {
-  remove: () => void;
-}
-
-function FabGroup(
-  {fabActions}: FabGroupProps,
-  ref: ForwardedRef<FabGroupHandles>,
-) {
+function FabGroup({fabActions, setFabActions}: FabGroupProps) {
+  const insets = useSafeAreaInsets();
   const animationRef = useRef(new Animated.Value(0));
 
   const animatedBottom = animationRef.current.interpolate({
@@ -52,35 +40,29 @@ function FabGroup(
 
   const mainFabAnimation = useRef(new Animated.Value(1));
 
-  useImperativeHandle(ref, () => ({
-    remove: () => {
-      //mainFabAnimation.current.setValue(0);
-    },
-  }));
+  const showAnimation = useCallback(() => {
+    animationRef.current.setValue(1);
 
-  const {setIsDimmed, isDimmed} = useContext(FabGroupContext);
+    Animated.timing(animationRef.current, {
+      toValue: 2,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
-  const changeDimmedState = useCallback(() => {
-    const newIsDimmedState = !isDimmed;
+  const hideAnimation = useCallback(() => {
+    Animated.timing(animationRef.current, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() => setFabActions([]));
+  }, [setFabActions]);
 
-    if (newIsDimmedState) {
-      animationRef.current.setValue(1);
-
-      setIsDimmed(newIsDimmedState);
-
-      Animated.timing(animationRef.current, {
-        toValue: 2,
-        duration: 200,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      Animated.timing(animationRef.current, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start(() => setIsDimmed(newIsDimmedState));
+  useLayoutEffect(() => {
+    if (fabActions.length) {
+      showAnimation();
     }
-  }, [setIsDimmed, isDimmed]);
+  }, [showAnimation, fabActions.length]);
 
   if (!fabActions.length) {
     return null;
@@ -88,53 +70,54 @@ function FabGroup(
 
   return (
     <>
-      {isDimmed && (
-        <Animated.View
-          style={[
-            StyleSheet.absoluteFill,
-            {backgroundColor: '#000', opacity: backgroundOpacity},
-          ]}
-        />
-      )}
       <Animated.View
-        style={[styles.container, {opacity: mainFabAnimation.current}]}>
-        {isDimmed &&
-          fabActions.map(fabAction => (
-            <Animated.View
-              style={{
-                marginBottom: 10,
-                marginRight: 5,
-                transform: [{translateY: animatedBottom}],
-                opacity,
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <Animated.Text
-                style={{
-                  color: theme.text,
-                  marginRight: 10,
-                  backgroundColor: theme.primary,
-                  paddingVertical: 5,
-                  paddingHorizontal: 10,
-                  ...shadow,
-                }}>
-                {fabAction.label}
-              </Animated.Text>
-              <Fab
-                size={40}
-                onPress={fabAction.onPress}
-                iconName={fabAction.iconName}
-              />
-            </Animated.View>
-          ))}
+        style={[
+          StyleSheet.absoluteFill,
+          {backgroundColor: '#000', opacity: backgroundOpacity},
+        ]}
+      />
 
-        <CreateFab onPress={changeDimmedState} />
+      <Animated.View
+        style={[
+          styles.container,
+          {opacity: mainFabAnimation.current, bottom: insets.bottom + 15},
+        ]}>
+        {fabActions.map(fabAction => (
+          <Animated.View
+            style={{
+              marginBottom: 10,
+              marginRight: 5,
+              transform: [{translateY: animatedBottom}],
+              opacity,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Animated.Text
+              style={{
+                color: theme.text,
+                marginRight: 10,
+                backgroundColor: theme.primary,
+                paddingVertical: 5,
+                paddingHorizontal: 10,
+                ...shadow,
+              }}>
+              {fabAction.label}
+            </Animated.Text>
+            <Fab
+              size={46}
+              onPress={fabAction.onPress}
+              iconName={fabAction.iconName}
+            />
+          </Animated.View>
+        ))}
+
+        <CreateFab onPress={hideAnimation} />
       </Animated.View>
     </>
   );
 }
 
-export default forwardRef(FabGroup);
+export default FabGroup;
 
 const styles = StyleSheet.create({
   container: {

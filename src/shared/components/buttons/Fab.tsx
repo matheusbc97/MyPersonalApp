@@ -16,7 +16,7 @@ export interface FabProps {
 const Fab: React.FC<FabProps> = ({
   onPress,
   style,
-  size = 50,
+  size = 54,
   iconName = '',
 }) => {
   return (
