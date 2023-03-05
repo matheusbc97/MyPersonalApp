@@ -5,18 +5,20 @@ import {shadow} from '@/shared/styles';
 
 import Text from '../Text';
 
-import Button from './Button';
+import Button, {ButtonProps} from './Button';
 
-export interface ContainedButtonProps {
-  onPress?: () => void;
+export interface ContainedButtonProps extends ButtonProps {
   text?: string;
   style?: StyleProp<ViewStyle>;
 }
 
-const ContainedButton = ({onPress, text, style}: ContainedButtonProps) => {
+const ContainedButton = ({
+  text,
+  style,
+  ...buttonProps
+}: ContainedButtonProps) => {
   return (
     <Button
-      onPress={onPress}
       style={[
         {
           backgroundColor: theme.primary,
@@ -28,7 +30,8 @@ const ContainedButton = ({onPress, text, style}: ContainedButtonProps) => {
           borderRadius: 2,
         },
         style,
-      ]}>
+      ]}
+      {...buttonProps}>
       <Text>{text}</Text>
     </Button>
   );

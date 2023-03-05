@@ -7,7 +7,7 @@ const localUrl =
     ? `http://10.0.2.2:${devPort}`
     : `http://localhost:${devPort}`;
 
-export const apiUrl = prodUrl;
+export const apiUrl = localUrl;
 
 export const isGateway = false;
 

@@ -8,6 +8,7 @@ import {
   ScreenWrapper,
   Text,
 } from '@/shared/components';
+import ContainedButton from '@/shared/components/buttons/ContainedButton';
 import {FabAction} from '@/shared/components/buttons/FabGroup';
 import {CardProps} from '@/shared/components/containers/Card';
 import Column from '@/shared/components/containers/Column';
@@ -82,9 +83,12 @@ const quests = [
 ];
 
 const fabActions: FabAction[] = [
-  {iconName: 'rocket', label: 'Editar', onPress: () => {}},
-  {iconName: 'star', label: 'Criar', onPress: () => {}},
-  {iconName: 'certificate', label: 'Alterar Descrição', onPress: () => {}},
+  {iconName: 'rocket', label: 'Nova Missão', onPress: () => {}},
+  {
+    iconName: 'list-ul',
+    label: 'Nova Listagem',
+    onPress: () => {},
+  },
 ];
 
 function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
@@ -137,6 +141,11 @@ function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
             <QuestListItem quest={quest} mv={5} />
           ))}
         </Column>
+
+        <Text type="title" mt={15}>
+          Outras Informações
+        </Text>
+        <ContainedButton mt={10} text="62 Missões Completadas" />
       </Column>
       <Row spaceBetween>
         <Row>
@@ -151,7 +160,6 @@ function GoalDetailsPage({route, navigation}: ScreenProps<'GoalDetails'>) {
 
         <CreateFab onPress={() => setFabActions(fabActions)} />
       </Row>
-      {/*<FabGroup />*/}
     </ScreenWrapper>
   );
 }

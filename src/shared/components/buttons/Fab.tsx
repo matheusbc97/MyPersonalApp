@@ -5,12 +5,14 @@ import theme from '@/assets/theme';
 import {shadow} from '@/shared/styles';
 
 import Button from './Button';
+import {IconFontFamily} from '../Icon';
 
 export interface FabProps {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
   iconName?: string;
   size?: number;
+  iconFamily?: IconFontFamily;
 }
 
 const Fab: React.FC<FabProps> = ({
@@ -18,6 +20,7 @@ const Fab: React.FC<FabProps> = ({
   style,
   size = 54,
   iconName = '',
+  iconFamily,
 }) => {
   return (
     <Button
@@ -34,7 +37,12 @@ const Fab: React.FC<FabProps> = ({
         },
         style,
       ]}>
-      <FontAwesome5 name={iconName} size={size * 0.5} color={theme.secondary} />
+      <FontAwesome5
+        name={iconName}
+        size={size * 0.5}
+        color={theme.secondary}
+        iconFamily={iconFamily}
+      />
     </Button>
   );
 };

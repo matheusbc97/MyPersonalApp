@@ -7,11 +7,13 @@ import {shadow} from '@/shared/styles';
 import Fab from '../Fab';
 import CreateFab from '../filled/fabs/CreateFab';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {IconFontFamily} from '../../Icon';
 
 export interface FabAction {
   iconName: string;
   onPress: () => void;
   label: string;
+  iconFamily?: IconFontFamily;
 }
 
 interface FabGroupProps {
@@ -107,6 +109,7 @@ function FabGroup({fabActions, setFabActions}: FabGroupProps) {
               size={46}
               onPress={fabAction.onPress}
               iconName={fabAction.iconName}
+              iconFamily={fabAction.iconFamily}
             />
           </Animated.View>
         ))}
