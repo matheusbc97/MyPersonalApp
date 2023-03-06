@@ -12,6 +12,7 @@ import {
 import {mockCreateFinance} from '@/mocks';
 import {
   createFinancesRequest,
+  deleteFinanceRequest,
   fetchMonthlyFinancesRequest,
   updateFinancesRequest,
 } from '@/shared/requests/finances/finances';
@@ -60,6 +61,13 @@ export function deletePaymentOfFinanceService(
 ): Promise<void> {
   return apiService({
     api: deletePaymentRequest(paymentId),
+    mock: mockRequest(null),
+  });
+}
+
+export function deleteFinanceService(financeId: number): Promise<void> {
+  return apiService({
+    api: deleteFinanceRequest(financeId),
     mock: mockRequest(null),
   });
 }

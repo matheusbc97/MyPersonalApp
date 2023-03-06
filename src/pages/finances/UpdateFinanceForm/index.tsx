@@ -9,14 +9,16 @@ import {
   IFinanceForm,
   FinanceFormHandles,
   PaidRadioListInput,
+  DeleteIconButtonWithModal,
 } from '@/shared/components';
 
-import getCurrency from '@/shared/utils/getCurrency';
+//import getCurrency from '@/shared/utils/getCurrency';
 import {ScreenProps} from '@/shared/types';
 
 import {useUpdateFinance} from '@/shared/hooks';
 import usePaid from './hooks/usePaid';
 import getFinanceInitialState from './utils/getFinanceInitialState';
+import useDeleteFinance from '@/shared/hooks/requests/finances/useDeleteFinance';
 
 function UpdateFinanceFormPage({
   route,
@@ -47,8 +49,18 @@ function UpdateFinanceFormPage({
     } catch {}
   };
 
+  const deleteFinance = useDeleteFinance();
+
+  const handleDeleteFinance = async () => {
+    console.log('delete', finance);
+    try {
+      await deleteFinance(finance.id);
+      navigation.pop();
+    } catch {}
+  };
+
   return (
-    <ScreenWrapper>
+    <ScreenWrapper pt={15}>
       <FinanceForm
         ref={financeFormRef}
         initialState={getFinanceInitialState(finance)}
@@ -59,9 +71,17 @@ function UpdateFinanceFormPage({
         onChangeValue={value => makePayment(value)}
         value={paid}
       />
-      <Row justifyEnd style={{marginTop: 20}}>
-        <CancelTextButtonWithGoBack />
-        <SaveContainedButton onPress={() => financeFormRef.current?.submit()} />
+      <Row spaceBetween>
+        <DeleteIconButtonWithModal
+          deleteText={finance.name}
+          onConfirmPress={handleDeleteFinance}
+        />
+        <Row style={{marginTop: 20}}>
+          <CancelTextButtonWithGoBack />
+          <SaveContainedButton
+            onPress={() => financeFormRef.current?.submit()}
+          />
+        </Row>
       </Row>
     </ScreenWrapper>
   );

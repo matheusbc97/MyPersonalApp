@@ -32,3 +32,11 @@ export async function updateFinancesRequest({
 
   return response.data;
 }
+
+export async function deleteFinanceRequest(
+  id: number,
+): Promise<UpdateFinanceParams[]> {
+  const response = await api.delete(`/finances/${id}`);
+
+  return response.data;
+}
