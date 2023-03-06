@@ -12,14 +12,20 @@ import {
   GroupInput,
   PaymentMethodInput,
 } from '@/shared/components';
-import {Currency, FinanceType, FormHandles, Group} from '@/shared/types';
+import {
+  Currency,
+  FinanceType,
+  FormHandles,
+  Group,
+  PaymentMethod,
+} from '@/shared/types';
 import validations from '@/shared/utils/validations';
 import useFormTemplate from '@/shared/hooks/useFormTemplate';
 import {financesDateTypes} from '@/shared/constants/financeDateTypes';
 
 export interface IFinanceForm {
   name: string;
-  paymentMethod: string;
+  paymentMethod: PaymentMethod;
   currency: Currency | null;
   amount: string;
   group: Group | null;
@@ -67,8 +73,10 @@ const FinanceNoteForm = (
           onSubmitEditing={() => formRef.current.paymentMethod?.focus()}
         />
         <PaymentMethodInput
-          formProps={handleFormInputProps('paymentMethod')}
-          onSubmitEditing={() => formRef.current.currency?.focus()}
+          onPaymentMethodSelect={paymentMethod =>
+            handleValueChange('paymentMethod', paymentMethod)
+          }
+          error={errors.paymentMethod}
         />
         <Row>
           <CurrencySelectInput

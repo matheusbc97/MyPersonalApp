@@ -8,6 +8,7 @@ import {
   GymExercise,
   Country,
   Goal,
+  PaymentMethod,
 } from '@/shared/types';
 import {MonthlyFinance} from '@/shared/types/Finance';
 
@@ -78,5 +79,8 @@ export type StackParams = {
   };
   CreateQuest: {
     goal: Goal;
+  };
+  FinancesPaymentMethods: {
+    onSelectPaymentMethod: (paymentMethod: PaymentMethod) => void;
   };
 };

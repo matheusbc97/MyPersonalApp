@@ -40,6 +40,7 @@ import CreateGoalFormPage from '@/pages/goals/CreateGoalPage';
 import GoalDetailsPage from '@/pages/goals/GoalDetailsPage';
 import UpdateGoalPage from '@/pages/goals/UpdateGoalPage';
 import CreateQuestPage from '@/pages/goals/CreateQuestPage';
+import FinancesPaymentMethods from '@/pages/finances/FinancesPaymentMethods';
 
 const Stack = createNativeStackNavigator<StackParams>();
 
@@ -312,6 +313,13 @@ function MyStack() {
             headerTitle: 'Criar Missão',
           }}
           component={CreateQuestPage}
+        />
+        <Stack.Screen
+          name="FinancesPaymentMethods"
+          options={{
+            headerTitle: 'Métodos de Pagamento',
+          }}
+          component={FinancesPaymentMethods}
         />
       </Stack.Navigator>
     </NavigationContainer>

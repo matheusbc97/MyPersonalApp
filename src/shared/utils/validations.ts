@@ -1,4 +1,4 @@
-import {Currency, FinanceType, Group} from '@/shared/types';
+import {Currency, FinanceType, Group, PaymentMethod} from '@/shared/types';
 
 type ValidationValue<T> = T | null | undefined;
 
@@ -42,7 +42,7 @@ const weight = _validationFn((value, required) => {
   return '';
 });
 
-const paymentMethod = _validationFn((value, required) => {
+const paymentMethod = _validationFn<PaymentMethod>((value, required) => {
   if (!value) {
     return required ? 'Campo Obrigatório' : '';
   }

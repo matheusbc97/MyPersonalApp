@@ -42,7 +42,7 @@ function UpdateFinanceFormPage({
         fixedDate: true,
         day: Number(form.day),
         name: form.name,
-        paymentMethod: form.paymentMethod,
+        paymentMethod: form.paymentMethod.name,
       });
 
       navigation.pop();

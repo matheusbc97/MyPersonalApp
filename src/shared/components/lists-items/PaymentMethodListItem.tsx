@@ -1,16 +1,19 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {Group} from '@/shared/types';
+import {PaymentMethod} from '@/shared/types';
 import {Text, Card} from '@/shared/components';
 import theme from '@/assets/theme';
 
-interface Props {
-  group: Group;
+interface PaymentMethodListItemProps {
+  paymentMethod: PaymentMethod;
   onPress: () => void;
 }
 
-const GroupListItem: React.FC<Props> = ({group, onPress}) => {
+function PaymentMethodListItem({
+  paymentMethod,
+  onPress,
+}: PaymentMethodListItemProps) {
   return (
     <Card
       onPress={onPress}
@@ -20,12 +23,12 @@ const GroupListItem: React.FC<Props> = ({group, onPress}) => {
         justifyContent: 'space-between',
       }}>
       <Text type="title" style={{flex: 1}}>
-        {group.title}
+        {paymentMethod.name}
       </Text>
 
       <Icon name="pencil" color={theme.text} size={15} />
     </Card>
   );
-};
+}
 
-export default GroupListItem;
+export default PaymentMethodListItem;

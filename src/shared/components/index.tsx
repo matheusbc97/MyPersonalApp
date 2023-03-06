@@ -84,6 +84,7 @@ import GoalListItem from './lists-items/GoalListItem';
 import GoalForm, {GoalFormHandles, IGoalForm} from './forms/GoalForm';
 import FabGroup from './buttons/FabGroup';
 import DimBackground from './DimBackground';
+import PaymentMethodListItem from './lists-items/PaymentMethodListItem';
 
 export {default as EditIconButton} from './buttons/filled/icon-buttons/EditIconButton';
 
@@ -168,6 +169,7 @@ export {
   GoalForm,
   FabGroup,
   DimBackground,
+  PaymentMethodListItem,
 };
 
 export type {
