@@ -47,9 +47,7 @@ const PaymentMethodInput = (
   useImperativeHandle(
     ref,
     () => ({
-      focus: () => {
-        navigateToFinancePaymentMethod();
-      },
+      focus: navigateToFinancePaymentMethod,
     }),
     [navigateToFinancePaymentMethod],
   );

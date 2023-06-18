@@ -1,24 +1,24 @@
 import {useRef} from 'react';
 
 import {
-  ScreenWrapper,
+  CancelTextButtonWithGoBack,
+  DeleteIconButtonWithModal,
+  FinanceForm,
+  FinanceFormHandles,
+  IFinanceForm,
+  PaidRadioListInput,
   Row,
   SaveContainedButton,
-  CancelTextButtonWithGoBack,
-  FinanceForm,
-  IFinanceForm,
-  FinanceFormHandles,
-  PaidRadioListInput,
-  DeleteIconButtonWithModal,
+  ScreenWrapper,
 } from '@/shared/components';
 
 //import getCurrency from '@/shared/utils/getCurrency';
 import {ScreenProps} from '@/shared/types';
 
 import {useUpdateFinance} from '@/shared/hooks';
+import useDeleteFinance from '@/shared/hooks/requests/finances/useDeleteFinance';
 import usePaid from './hooks/usePaid';
 import getFinanceInitialState from './utils/getFinanceInitialState';
-import useDeleteFinance from '@/shared/hooks/requests/finances/useDeleteFinance';
 
 function UpdateFinanceFormPage({
   route,
@@ -52,7 +52,6 @@ function UpdateFinanceFormPage({
   const deleteFinance = useDeleteFinance();
 
   const handleDeleteFinance = async () => {
-    console.log('delete', finance);
     try {
       await deleteFinance(finance.id);
       navigation.pop();

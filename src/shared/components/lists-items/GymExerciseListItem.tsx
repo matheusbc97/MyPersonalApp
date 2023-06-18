@@ -32,7 +32,7 @@ const GymExerciseListItem = ({
             </Text>
           </Row>
           <Row spaceBetween style={{marginTop: 4}}>
-            <Text>Peso: {gymExerciseData.weight}kg</Text>
+            <Text>Peso: {gymExerciseData.weight}</Text>
             <IconButton
               size={20}
               iconName="dumbbell"
